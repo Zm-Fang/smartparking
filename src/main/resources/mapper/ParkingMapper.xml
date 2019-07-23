@@ -55,4 +55,22 @@
         `parking_id` = #{parkingId};
     </update>
 
+    <select id="search" resultType="com.terminator.smart.parking.entity.Parking">
+    select parking.parking_id,parking.parking_name,parking.parking_price,parking.parking_usable
+    from parking
+    where parking_name like CONCAT(CONCAT('%', #{parkingName}), '%')
+  </select>
+
+    <select id="selectByParkingId" resultType="com.terminator.smart.parking.entity.Parking">
+        select * from parking
+        where
+        `parking_id`=#{parkingId};
+    </select>
+
+    <select id="selectByParkingSite" resultType="com.terminator.smart.parking.entity.Parking">
+        select parking.parking_id,parking.parking_name,parking.parking_price,parking.parking_usable
+        from parking
+        where
+        `parking_site`=#{parkingSite};
+    </select>
 </mapper>

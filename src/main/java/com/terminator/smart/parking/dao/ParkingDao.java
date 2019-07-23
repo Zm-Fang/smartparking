@@ -2,8 +2,10 @@ package com.terminator.smart.parking.dao;
 
 import com.terminator.smart.parking.entity.Parking;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @Description 停车场 dao 层，用于数据库交互
@@ -47,4 +49,26 @@ public interface ParkingDao {
      * @DateTime 2019/7/23 0:27
      */
     int updateParkingByParkingId(Parking parking);
+
+    /**
+    *@Description   通过模糊查询停车场名  查看停车场信息
+    *@Author 刘新全
+    *@DateTime 2019/7/23 17:04
+    */
+    List<Parking> search(@RequestParam("parkingName")String parkingName);
+
+
+    /**
+    *@Description  通过id查询停车场信息
+    *@Author 刘新全
+    *@DateTime 2019/7/23 17:48
+    */
+    Parking selectByParkingId(Integer parkingId);
+
+    /**
+    *@Description  通过地点查询停车场信息
+    *@Author 刘新全
+    *@DateTime 2019/7/23 17:49
+    */
+    Parking selectByParkingSite(String parkingSite);
 }

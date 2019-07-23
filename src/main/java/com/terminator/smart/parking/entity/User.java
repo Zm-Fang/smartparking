@@ -1,5 +1,9 @@
 package com.terminator.smart.parking.entity;
-
+/**
+*@Description  用户实体类
+*@Author 杨志豪
+*@DateTime 2019/7/23 0023 11:43
+*/
 public class User {
     private int userId;
     private String username;

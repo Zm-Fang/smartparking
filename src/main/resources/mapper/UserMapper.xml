@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terminator.smart.parking.dao.UserDao">
+    <sql id="selectByUsernameSql">
+		SELECT
+	a.user_id,
+	a.username,
+	a.`password`,
+	a.phone,
+	a.license_number,
+	a.email
+FROM
+	user AS a
+	WHERE a.username=#{username} AND a.password=#{password}
+	</sql>
+
+    <select id="findUser" resultType="com.terminator.smart.parking.entity.User">
+        <include refid="selectByUsernameSql"/>
+    </select>
+
+	<insert id="insertUser" parameterType="com.terminator.smart.parking.entity.User" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `user` (
+	`username`,
+	`password`,
+	`phone`,
+	`license_number`,
+	`email`
+)
+VALUES
+	(
+		#{username},
+		#{password},
+		#{phone},
+		#{licenseNumber},
+		#{email}
+
+	);
+	</insert>
+
+	<update id="updateUserInfo">
+		UPDATE `user`
+		<set>
+			<if test="null!=username">
+				`username` = #{username},
+			</if>
+			<if test="null!=password">
+				`password` = #{password},
+			</if>
+			<if test="null!=phone">
+				`phone` = #{phone},
+			</if>
+			<if test="null!=licenseNumber">
+				`license_number` = #{licenseNumber},
+			</if>
+			<if test="null!=email">
+				`email` = #{email},
+			</if>
+		</set>
+		WHERE
+		(`user_id` = #{userId});
+	</update>
+</mapper>

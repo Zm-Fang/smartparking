@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terminator.smart.parking.dao.ParkingDao">
+
+    <select id="selectAll" resultType="com.terminator.smart.parking.entity.Parking">
+        SELECT
+        parking.parking_id,
+        parking.parking_name,
+        parking.parking_price,
+        parking.parking_site,
+        parking.parking_total,
+        parking.parking_usable,
+        parking.parking_flag
+        FROM
+        parking
+        WHERE
+        parking.parking_flag = 1;
+    </select>
+
+    <insert id="insertParking" parameterType="com.terminator.smart.parking.entity.Parking">
+        INSERT INTO `parking` (
+            `parking_name`,
+            `parking_price`,
+            `parking_site`,
+            `parking_total`,
+            `parking_usable`
+        )
+        VALUES
+            (
+                #{parkingName},
+                #{parkingPrice},
+                #{parkingSite},
+                #{parkingTotal},
+                #{parkingUsable}
+            );
+    </insert>
+
+    <update id="deleteParkingByParkingId">
+        UPDATE `parking`
+        SET
+         `parking_flag` = '0'
+        WHERE
+            `parking_id` = #{id};
+    </update>
+
+    <update id="updateParkingByParkingId" parameterType="com.terminator.smart.parking.entity.Parking">
+        UPDATE `smartparking`.`parking`
+        SET
+         `parking_name` = #{parkingName},
+         `parking_price` = #{parkingPrice},
+         `parking_site` = #{parkingSite},
+         `parking_total` = #{parkingTotal},
+         `parking_usable` = #{parkingUsable}
+        WHERE
+        `parking_id` = #{parkingId};
+    </update>
+
+</mapper>

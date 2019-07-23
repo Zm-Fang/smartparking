@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terminator.smart.parking.dao.OpinionDao">
+
+    <select id="selectAll" resultType="com.terminator.smart.parking.entity.Opinion">
+        SELECT
+        opinion.opinion_id,
+        opinion.opinion_title,
+        opinion.opinion_body,
+        opinion.opinion_time,
+        opinion.opinion_flag
+        FROM
+        opinion
+        WHERE
+        opinion.opinion_flag = 1;
+    </select>
+
+    <insert id="insertOpinion" parameterType="com.terminator.smart.parking.entity.Opinion">
+        INSERT INTO `opinion` (
+            `opinion_title`,
+            `opinion_body`,
+            `opinion_time`
+        )
+        VALUES
+            (
+                #{opinionTitle},
+                #{opinionBody},
+                #{opinionTime}
+            );
+    </insert>
+
+    <update id="deleteOpinionByOpinionId">
+        UPDATE `opinion`
+        SET
+         `opinion_flag` = '0'
+        WHERE
+            `opinion_id` = #{id};
+    </update>
+
+</mapper>

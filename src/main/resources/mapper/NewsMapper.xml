@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terminator.smart.parking.dao.NewsDao">
+
+    <select id="selectAll" resultType="com.terminator.smart.parking.entity.News">
+        SELECT
+        news.news_id,
+        news.news_title,
+        news.news_body,
+        news.news_time,
+        news.news_type,
+        news.user_id,
+        news.username,
+        news.news_flag
+        FROM
+        news
+        WHERE
+        news.news_flag = 1
+    </select>
+
+    <select id="selectByUserId" parameterType="com.terminator.smart.parking.entity.News">
+        SELECT
+        news.news_id,
+        news.news_title,
+        news.news_body,
+        news.news_time,
+        news.news_type,
+        news.user_id,
+        news.username,
+        news.news_flag
+        FROM
+        news
+        WHERE
+        news.news_flag = 1
+        AND
+        news.news_type = '系统消息'
+    </select>
+
+    <insert id="insertNews" parameterType="com.terminator.smart.parking.entity.News">
+        INSERT INTO `news` (
+        	`news_title`,
+        	`news_body`,
+        	`news_time`,
+        	`news_type`,
+        	`user_id`,
+        	`username`
+        )
+        VALUES
+        	(
+        		#{newsTitle},
+        		#{newsBody},
+        		#{newsTime},
+        		#{newsType},
+        		#{userId},
+        		#{username}
+        	);
+    </insert>
+    
+    <update id="deleteNewsByNewsId">
+        UPDATE `smartparking`.`news`
+        SET
+         `news_flag` = '0'
+        WHERE
+            `news_id` = #{id};
+    </update>
+
+
+</mapper>

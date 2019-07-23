@@ -12,12 +12,11 @@ public class User {
     private String licenseNumber;
     private String email;
     private int verify;
-    private int flag;
 
     public User() {
     }
 
-    public User(int userId, String username, String password, String phone, String licenseNumber, String email, int verify, int flag) {
+    public User(int userId, String username, String password, String phone, String licenseNumber, String email, int verify) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -25,7 +24,16 @@ public class User {
         this.licenseNumber = licenseNumber;
         this.email = email;
         this.verify = verify;
-        this.flag = flag;
+
+    }
+    public User(String username, String password, String phone, String licenseNumber, String email, int verify) {
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.licenseNumber = licenseNumber;
+        this.email = email;
+        this.verify = verify;
+
     }
 
     public int getUserId() {
@@ -84,13 +92,7 @@ public class User {
         this.verify = verify;
     }
 
-    public int getFlag() {
-        return flag;
-    }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
 
     @Override
     public String toString() {
@@ -102,7 +104,6 @@ public class User {
                 ", licenseNumber='" + licenseNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", verify=" + verify +
-                ", flag=" + flag +
                 '}';
     }
 }

@@ -63,12 +63,12 @@ public interface ParkingDao {
     *@Author 刘新全
     *@DateTime 2019/7/23 17:48
     */
-    Parking selectByParkingId(Integer parkingId);
+    List<Parking> selectByParkingId(Integer parkingId);
 
     /**
     *@Description  通过地点查询停车场信息
     *@Author 刘新全
     *@DateTime 2019/7/23 17:49
     */
-    Parking selectByParkingSite(String parkingSite);
+    List<Parking>  selectByParkingSite(String parkingSite);
 }

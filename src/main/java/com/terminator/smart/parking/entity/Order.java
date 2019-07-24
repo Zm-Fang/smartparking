@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Order implements Serializable {
+    private Date startTime;
+    private Double orderPirce;
     private int userId;
     private String username;
     private int orderId;
@@ -18,8 +20,9 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(int userId, String username, int orderId, String licenseNumber, String parkingName,
-                 Date createTime, Date stopTime, String orderStatus, int flag, int isRemove) {
+    public Order(Date startTime, Double orderPirce, int userId, String username, int orderId, String licenseNumber, String parkingName, Date createTime, Date stopTime, String orderStatus, int flag, int isRemove) {
+        this.startTime = startTime;
+        this.orderPirce = orderPirce;
         this.userId = userId;
         this.username = username;
         this.orderId = orderId;
@@ -30,6 +33,22 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
         this.flag = flag;
         this.isRemove = isRemove;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Double getOrderPirce() {
+        return orderPirce;
+    }
+
+    public void setOrderPirce(Double orderPirce) {
+        this.orderPirce = orderPirce;
     }
 
     public int getUserId() {
@@ -114,11 +133,10 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order{" + "userId=" + userId + ", username='" + username + '\'' + ", " +
-                "orderId=" + orderId + ", licenseNumber='" + licenseNumber + '\'' + "," +
-                " parkingName='" + parkingName + '\'' + ", createTime=" + createTime + ", " +
-                "stopTime=" + stopTime + ", orderStatus='" + orderStatus + '\'' + ", flag=" + flag + "," +
-                " isRemove=" + isRemove + '}';
-
+        return "Order{" + "startTime=" + startTime + ", orderPirce=" + orderPirce + ", " +
+                "userId=" + userId + ", username='" + username + '\'' + ", orderId=" +
+                orderId + ", licenseNumber='" + licenseNumber + '\'' + ", parkingName='" +
+                parkingName + '\'' + ", createTime=" + createTime + ", stopTime=" + stopTime + "," +
+                " orderStatus='" + orderStatus + '\'' + ", flag=" + flag + ", isRemove=" + isRemove + '}';
     }
 }

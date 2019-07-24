@@ -17,6 +17,12 @@
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven />
 
+    <!--&lt;!&ndash; 定义视图文件解析 &ndash;&gt;-->
+    <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="${web.view.prefix}"/>-->
+        <!--<property name="suffix" value="${web.view.suffix}"/>-->
+    <!--</bean>-->
+
     <!-- 定义视图文件解析 -->
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="${web.view.prefix}"/>

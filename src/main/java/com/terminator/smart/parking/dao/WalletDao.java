@@ -3,6 +3,8 @@ package com.terminator.smart.parking.dao;
 import com.terminator.smart.parking.entity.Wallet;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
 *@Description 
 *@Author 周智华
@@ -27,8 +29,8 @@ public interface WalletDao
 
     /**
      *  查询余额
-     * @param user_id   需要查询余额的用户
+     * @param userId   需要查询余额的用户
      * @return          余额
      */
-    String selectBalance(String user_id);
+    List<Wallet> selectBalance(String userId);
 }

@@ -27,7 +27,6 @@ public class OrderController {
     @RequestMapping(value = "/insert")
     public String insert(HttpServletRequest request,ModelMap modelMap) {
         Order order = (Order) request.getSession().getAttribute("order");
-        System.out.println("====1======="+order);
         orderService.insert(order);
         modelMap.addAttribute("order",order);
         request.getSession().removeAttribute("order");
@@ -83,9 +82,7 @@ public class OrderController {
      */
     @RequestMapping(value = "/toUpdate",method = RequestMethod.POST)
     public String toUpdate(Order order,ModelMap modelMap){
-        System.out.println(order);
         boolean flag = orderService.update(order);
-        System.out.println("000"+flag);
         if (flag){
             modelMap.addAttribute("msg","<font color='green'>修改成功</font>");
             List<Order> orders = orderService.selectByUserId(1);
@@ -106,6 +103,42 @@ public class OrderController {
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
     public String delete(@RequestParam("orderId") int id,@RequestParam("userId") int userId,ModelMap modelMap){
         orderService.deleteByFlag(id);
+        return "redirect:/order/selectByUserId";
+    }
+
+    /**
+     *  已完成订单
+     * @param id
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/success",method = RequestMethod.GET)
+    public String success(@RequestParam("orderId") int id,ModelMap modelMap){
+        orderService.success(id);
+        return "redirect:/order/selectByUserId";
+    }
+
+    /**
+     * 已失效订单
+     * @param id
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/loser",method = RequestMethod.GET)
+    public String loser(@RequestParam("orderId")int id,ModelMap modelMap){
+        orderService.loser(id);
+        return "redirect:/order/selectByUserId";
+    }
+
+    /**
+     * 预约成功订单
+     * @param id
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/successful",method = RequestMethod.GET)
+    public String successful(@RequestParam("orderId") int id,ModelMap modelMap){
+        orderService.successful(id);
         return "redirect:/order/selectByUserId";
     }
 

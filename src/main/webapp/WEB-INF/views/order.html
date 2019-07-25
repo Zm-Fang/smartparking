@@ -65,8 +65,8 @@
                                 <td th:text="${order.createTime}"></td>
                                 <td th:text="${order.stopTime}"></td>
                                 <td th:text="${order.orderStatus}"></td>
-                                <td >
-                                    <form action="/order/update" method="post">
+                                <td>
+                                    <form action="/order/update" method="post" th:if="${(order.getOrderStatus() ne '已失效') and (order.getOrderStatus() ne '已完成订单')}">
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
                                         <input type="submit" class="btn btn-success" value="修改"/>
                                     </form>
@@ -75,11 +75,23 @@
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
                                         <input type="submit" class="btn btn-danger" value="删除" />
                                     </form>
+                                    <form action="/order/successful" th:if="${(order.getOrderStatus() eq '未付款')}">
+                                    <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
+                                    <input type="submit" class="btn btn-info" value="付款"/>
+                                    </form>
                                     <form action="/order/selectByOrderId" method="post">
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
-                                        <input type="submit" class="btn btn-info" value="查看订单"/>
+                                        <input type="submit" class="btn btn-warning" value="查看订单"/>
+                                    </form>
+                                    <form action="/order/success" th:if="${(order.getOrderStatus() eq '预约成功')}">
+                                        <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
+                                        <input type="submit" class="btn btn-info" value="完成订单"/>
                                     </form>
 
+                                    <form action="/order/loser" th:if="${(order.getOrderStatus() eq '未付款')}">
+                                        <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
+                                        <input type="submit" class="btn btn-primary" value="订单失效"/>
+                                    </form>
                                 </td>
                             </tr>
                             </tbody>

@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terminator.smart.parking.dao.UserDao">
-    <sql id="selectByUsernameSql">
-		SELECT
-	a.user_id,
-	a.username,
-	a.`password`,
-	a.phone,
-	a.license_number,
-	a.email
-FROM
-	user AS a
-	WHERE a.username=#{username} AND a.password=#{password}
-	</sql>
-
     <select id="findUser" resultType="com.terminator.smart.parking.entity.User">
-        <include refid="selectByUsernameSql"/>
-    </select>
+		SELECT
+	*
+FROM
+	USER
+WHERE
+	username = "${username}"
+AND PASSWORD = "${password}"
+	</select>
+
+
 
 	<insert id="insertUser" parameterType="com.terminator.smart.parking.entity.User" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO `user` (
@@ -60,36 +55,5 @@ VALUES
 		(`user_id` = #{userId});
 	</update>
 
-	<select id="selectAll" resultType="com.terminator.smart.parking.entity.User">
-		SELECT
-		`user`.user_id,
-		`user`.username,
-		`user`.`password`,
-		`user`.phone,
-		`user`.license_number,
-		`user`.email,
-		`user`.verify,
-		`user`.flag
-		FROM
-		`user`
-		WHERE
-		`user`.flag = 1;
-	</select>
 
-	<update id="deleteUserByUserId">
-		UPDATE `user`
-		SET
-		`flag` = '0'
-		WHERE
-		`user_id` = #{id};
-	</update>
-
-	<update id="resetUsernamePasswordByUserId" parameterType="com.terminator.smart.parking.entity.User">
-		UPDATE `user`
-		SET
-		 `username` = 'abc',
-		 `password` = '123'
-		WHERE
-		`user_id` = #{userId};
-	</update>
 </mapper>

@@ -75,11 +75,11 @@ public class ParkingController {
                           @RequestParam("end_time")Integer end_time,
                           HttpServletRequest request)
     {
-       // User user = (User) request.getSession().getAttribute("user");
-        User user = new User();
-        user.setUserId(1);
+        User user = (User) request.getSession().getAttribute("USER_LOGIN");
+
+        /*user.setUserId(1);
         user.setUsername("quange");
-        user.setLicenseNumber("1234465465");
+        user.setLicenseNumber("1234465465");*/
         String createTime=data_date_format+" "+start_time+":00:00";
         String stopTime=data_date_format+" "+end_time+":00:00";
 

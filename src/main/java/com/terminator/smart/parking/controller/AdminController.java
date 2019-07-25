@@ -38,10 +38,10 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/tofirst",method = RequestMethod.GET)
+   /* @RequestMapping(value = "/tofirst",method = RequestMethod.GET)
     public String tofirst() {
         return "first";
-    }
+    }*/
 
     @RequestMapping(value = "/toAdminLogin",method = RequestMethod.GET)
     public String toAdminLogin() {

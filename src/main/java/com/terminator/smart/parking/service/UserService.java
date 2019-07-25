@@ -18,8 +18,9 @@ public interface UserService {
 
    int insertUser(User user);
 
-
    List<User> selectAll();
+
+
 
    int deleteUserByUserId(int id);
 

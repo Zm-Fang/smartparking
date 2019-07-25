@@ -19,5 +19,11 @@ public interface ParkingService {
 
     int deleteParkingByParkingId(int id);
 
+    List<Parking> selectByParkingId(int id);
+
     int updateParkingByParkingId(Parking parking);
+
+    List<Parking> search(String parkingName);
+
+    List<Parking> selectByParkingSite(String parkingSite);
 }

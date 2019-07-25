@@ -36,7 +36,7 @@ public class ParkingController {
      */
     @RequestMapping(value = "/first",method = RequestMethod.GET)
     public String first(){
-        return "first";
+        return "index";
     }
 
     /**

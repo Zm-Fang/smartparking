@@ -40,8 +40,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertUser(User user)
     {
-        wallet.setUser_id(user.getUsername());
-        wallet.setWallet_balance(0.00);
+        wallet.setUserId(user.getUsername());
+        wallet.setWalletBalance(0.00);
         int rSet = userDao.insertUser(user);
         if (rSet > 0)
         {

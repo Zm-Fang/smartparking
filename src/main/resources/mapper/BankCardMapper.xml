@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.terminator.smart.parking.dao.BankCardDao">
+
+    <insert id="addBankCard" parameterType="com.terminator.smart.parking.entity.BankCard">
+        INSERT INTO bank_card (username, bank_name, card_id)
+VALUES
+	(
+		#{username},
+		#{bankName},
+		#{cardId}
+	)
+    </insert>
+
+    <update id="deleteBankCard">
+        UPDATE bank_card
+SET flag = 0
+WHERE
+	card_id = #{cardId}
+    </update>
+
+    <select id="getBankCardById" resultType="com.terminator.smart.parking.entity.BankCard">
+        SELECT
+	*
+FROM
+	bank_card
+WHERE
+	card_id = #{cardId}
+    </select>
+
+</mapper>

@@ -3,6 +3,8 @@ package com.terminator.smart.parking.service;
 import com.terminator.smart.parking.entity.Wallet;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
 *@Description 
 *@Author 周智华
@@ -18,16 +20,18 @@ public interface WalletService
     int insertWallet(Wallet wallet);
 
     /**
-     *  支付或者充值
-     * @param wallet    需要支付或者充值的钱包对象
+     *  充值或者支付
+     * @param username  需要充值或支付的用户
+     * @param money     需要充值或者支付的金额
+     * @param i         判断充值还是支付，1位充值，0位支付
      * @return          受影响行数
      */
-    int updateWallet(Wallet wallet);
+    int updateWallet(String username,String money,int i);
 
     /**
      *  查询余额
-     * @param user_id   需要查询余额的用户
+     * @param userId   需要查询余额的用户
      * @return          余额
      */
-    String selectBalance(String user_id);
+   List<Wallet> selectBalance(String userId);
 }

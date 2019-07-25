@@ -91,8 +91,6 @@
             <table class="table table-bordered data-table">
               <thead>
               <tr>
-                <th>预订年份</th>
-                <th>预订月份</th>
                 <th>预订日期</th>
                 <th>开始停车时间</th>
                 <th>结束停车时间</th>
@@ -101,116 +99,70 @@
               <tbody>
               <tr>
                 <td>
-                  <select name="year" id="year">
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
+                  <div class="control-group">
+                    <div class="controls">
+                      <div  data-date="2019-07-02" class="input-append date datepicker">
+                        <input type="text" data-date="2019-07-02"  data-date-format="yyyy-mm-dd" value="2019-07-02" class="datepicker span11" name="data-date-format"/>
+                        <span class="help-block">Date with Formate of  (dd-mm-yy)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </td>
+                <td>
+                  <select name="start_time" id="t1">
+                    <option value="0">00:00</option>
+                    <option value="1">01:00</option>
+                    <option value="2">02:00</option>
+                    <option value="3">03:00</option>
+                    <option value="4">04:00</option>
+                    <option value="5">05:00</option>
+                    <option value="6">06:00</option>
+                    <option value="7">07:00</option>
+                    <option value="8">08:00</option>
+                    <option value="9">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
                   </select>
                 </td>
                 <td>
-                  <select name="month" id="month">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                </td>
-                <td>
-                  <select name="date" id="date">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                    <option value="22">22</option>
-                    <option value="23">23</option>
-                    <option value="24">24</option>
-                    <option value="25">25</option>
-                    <option value="26">26</option>
-                    <option value="27">27</option>
-                    <option value="28">28</option>
-                    <option value="29">29</option>
-                    <option value="30">30</option>
-                    <option value="31">31</option>
-                  </select>
-                </td>
-                <td>
-                  <select name="start_time" >
-                    <option value="0:00:00">0:00</option>
-                    <option value="1:00:00">1:00</option>
-                    <option value="2:00:00">2:00</option>
-                    <option value="3:00:00">3:00</option>
-                    <option value="4:00:00">4:00</option>
-                    <option value="5:00:00">5:00</option>
-                    <option value="6:00:00">6:00</option>
-                    <option value="7:00:00">7:00</option>
-                    <option value="8:00:00">8:00</option>
-                    <option value="9:00:00">9:00</option>
-                    <option value="10:00:00">10:00</option>
-                    <option value="11:00:00">11:00</option>
-                    <option value="12:00:00">12:00</option>
-                    <option value="13:00:00">13:00</option>
-                    <option value="14:00:00">14:00</option>
-                    <option value="15:00:00">15:00</option>
-                    <option value="16:00:00">16:00</option>
-                    <option value="17:00:00">17:00</option>
-                    <option value="18:00:00">18:00</option>
-                    <option value="19:00:00">19:00</option>
-                    <option value="20:00:00">20:00</option>
-                    <option value="21:00:00">21:00</option>
-                    <option value="22:00:00">22:00</option>
-                    <option value="23:00:00">23:00</option>
-                  </select>
-                </td>
-                <td>
-                  <select name="end_time">
-                    <option value="1:00:00">1:00</option>
-                    <option value="2:00:00">2:00</option>
-                    <option value="3:00:00">3:00</option>
-                    <option value="4:00:00">4:00</option>
-                    <option value="5:00:00">5:00</option>
-                    <option value="6:00:00">6:00</option>
-                    <option value="7:00:00">7:00</option>
-                    <option value="8:00:00">8:00</option>
-                    <option value="9:00:00">9:00</option>
-                    <option value="10:00:00">10:00</option>
-                    <option value="11:00:00">11:00</option>
-                    <option value="12:00:00">12:00</option>
-                    <option value="13:00:00">13:00</option>
-                    <option value="14:00:00">14:00</option>
-                    <option value="15:00:00">15:00</option>
-                    <option value="16:00:00">16:00</option>
-                    <option value="17:00:00">17:00</option>
-                    <option value="18:00:00">18:00</option>
-                    <option value="19:00:00">19:00</option>
-                    <option value="20:00:00">20:00</option>
-                    <option value="21:00:00">21:00</option>
-                    <option value="22:00:00">22:00</option>
-                    <option value="23:00:00">23:00</option>
-                    <option value="24:00:00">24:00</option>
+                  <select name="end_time" id="t2">
+                    <option value="1">01:00</option>
+                    <option value="2">02:00</option>
+                    <option value="3">03:00</option>
+                    <option value="4">04:00</option>
+                    <option value="5">05:00</option>
+                    <option value="6">06:00</option>
+                    <option value="7">07:00</option>
+                    <option value="8">08:00</option>
+                    <option value="9">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
+                    <option value="24">24:00</option>
                   </select>
                 </td>
               </tr>
@@ -218,6 +170,7 @@
             </table>
           </div>
             <input type="submit" value="点击预订"/>
+
           </form>
 
         </div>
@@ -225,14 +178,22 @@
     </div>
   </div>
 </div>
-
 <script src="http://www.jq22.com/jquery/jquery-1.7.1.js"></script>
 <script src="../../static/js/jquery.ui.custom.js"></script>
 <script src="../../static/js/bootstrap.min.js"></script>
+<script src="../../static/js/bootstrap-colorpicker.js"></script>
+<script src="../../static/js/bootstrap-datepicker.js"></script>
+<script src="../../static/js/jquery.toggle.buttons.html"></script>
+<script src="../../static/js/masked.js"></script>
 <script src="../../static/js/jquery.uniform.js"></script>
 <script src="../../static/js/select2.min.js"></script>
-<script src="../../static/js/jquery.dataTables.min.js"></script>
 <script src="../../static/js/matrix.js"></script>
-<script src="../../static/js/matrix.tables.js"></script>
+<script src="../../static/js/matrix.form_common.js"></script>
+<script src="../../static/js/wysihtml5-0.3.0.js"></script>
+<script src="../../static/js/jquery.peity.min.js"></script>
+<script src="../../static/js/bootstrap-wysihtml5.js"></script>
+<script>
+    $('.textarea_editor').wysihtml5();
+</script>
 </body>
 </html>

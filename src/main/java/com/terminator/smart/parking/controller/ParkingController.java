@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -70,33 +70,39 @@ public class ParkingController {
     @RequestMapping(value = "/reserve",method = RequestMethod.POST)
     public String reserve(@RequestParam("parkingPrice")double parkingPrice,
                           @RequestParam("parkingName")String parkingName,
-                          @RequestParam("year")Integer year,
-                          @RequestParam("month")Integer month,
-                          @RequestParam("date")Integer date,
-                          @RequestParam("start_time")String start_time,
-                          @RequestParam("end_time")String end_time,
+                          @RequestParam("data-date-format")String data_date_format,
+                          @RequestParam("start_time")Integer start_time,
+                          @RequestParam("end_time")Integer end_time,
                           HttpServletRequest request)
     {
-        User user = (User) request.getSession().getAttribute("user");
-        String createTime=year+"-"+month+"-"+date+" "+start_time;
-        String stopTime=year+"-"+month+"-"+date+" "+end_time;
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        Date createTime1=null;
-        Date stopTime1=null;
-        Date startTime = new Date();
-        String s1 = StringUtils.substringBefore(start_time, ":");
-        String s2= StringUtils.substringBefore(end_time, ":");
-        Double orderPirce=(Integer.parseInt(s2)-Integer.parseInt(s1))*parkingPrice;
-        try {
-             createTime1 = format.parse(createTime);
-             stopTime1=format.parse(stopTime);
+       // User user = (User) request.getSession().getAttribute("user");
+        User user = new User();
+        user.setUserId(1);
+        user.setUsername("quange");
+        user.setLicenseNumber("1234465465");
+        String createTime=data_date_format+" "+start_time+":00:00";
+        String stopTime=data_date_format+" "+end_time+":00:00";
 
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date date1 = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        String startTime = format.format(date1);
+
+
+        Double orderPrice=((end_time)-(start_time))*parkingPrice;
+
         Order order = new Order();
+        order.setUserId(user.getUserId());
+        order.setUsername(user.getUsername());
+        order.setLicenseNumber(user.getLicenseNumber());
         order.setParkingName(parkingName);
-        return "timechoose";
+        order.setStartTime(startTime);
+        order.setCreateTime(createTime);
+        order.setStopTime(stopTime);
+        order.setOrderStatus("未付款");
+        order.setOrderPrice(orderPrice);
+        System.out.println("----------"+order);
+        request.getSession().setAttribute("order",order);
+        return "forward:/order/insert";
     }
 
 

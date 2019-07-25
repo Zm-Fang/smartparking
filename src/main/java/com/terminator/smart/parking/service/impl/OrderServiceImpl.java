@@ -2,25 +2,39 @@ package com.terminator.smart.parking.service.impl;
 
 import com.terminator.smart.parking.dao.OrderDao;
 import com.terminator.smart.parking.entity.Order;
+import com.terminator.smart.parking.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class OrderServiceImpl implements OrderDao {
-    @Autowired private OrderDao orderDao;
+public class OrderServiceImpl implements OrderService {
+    @Autowired
+    private OrderDao orderDao;
     @Override
     public Order selectId(int id) {
         return orderDao.selectId(id);
     }
 
     @Override
-    public int update(Order order) {
-        return orderDao.update(order);
+    public List<Order> selectByUserId(int UserId) {
+        return orderDao.selectByUserId(UserId);
     }
 
     @Override
-    public int deleteByFlag(Order order) {
-        return orderDao.deleteByFlag(order);
+    public boolean update(Order order) {
+        int update = orderDao.update(order);
+        if (update!=0){
+            return true;
+        }
+        return false;
+    }
+
+
+    @Override
+    public int deleteByFlag(int id) {
+        return orderDao.deleteByFlag(id);
     }
 
     @Override

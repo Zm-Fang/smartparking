@@ -32,5 +32,5 @@ public interface WalletDao
      * @param userId   需要查询余额的用户
      * @return          余额
      */
-    List<Wallet> selectBalance(String userId);
+    List<Wallet> selectBalance(Integer userId);
 }

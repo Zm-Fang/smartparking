@@ -26,25 +26,27 @@ public class WalletServiceImpl implements WalletService
     }
 
     @Override
-    public int updateWallet(String username, String money, int i)
+    public int updateWallet(Integer userId, Double money, int i)
     {
-        List<Wallet> wallets = walletDao.selectBalance(username);
-        wallet.setUserId(username);
+        List<Wallet> wallets = walletDao.selectBalance(userId);
+        wallet.setUserId(userId);
+        System.out.println("fdfd:"+money);
+        System.out.println(wallets.get(0).getWalletBalance());
         if (i > 0)
         {
-            wallet.setWalletBalance(wallets.get(0).getWalletBalance()+Double.parseDouble(money));
+            wallet.setWalletBalance(wallets.get(0).getWalletBalance()+money);
             return walletDao.updateWallet(wallet);
         }
         else
         {
-            wallet.setWalletBalance(wallets.get(0).getWalletBalance()-Double.parseDouble(money));
+            wallet.setWalletBalance(wallets.get(0).getWalletBalance()-money);
             return walletDao.updateWallet(wallet);
         }
     }
 
 
     @Override
-    public List<Wallet> selectBalance(String userId)
+    public List<Wallet> selectBalance(Integer userId)
     {
         List<Wallet> wallets = walletDao.selectBalance(userId);
 

@@ -75,7 +75,8 @@
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
                                         <input type="submit" class="btn btn-danger" value="删除" />
                                     </form>
-                                    <form action="/order/successful" th:if="${(order.getOrderStatus() eq '未付款')}">
+                                    <form action="/wallet/payment" method="post" th:if="${(order.getOrderStatus() eq '未付款')}">
+                                    <input type="hidden" th:value="${order.getOrderPrice()}" name="money"/>
                                     <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
                                     <input type="submit" class="btn btn-info" value="付款"/>
                                     </form>

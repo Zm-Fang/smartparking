@@ -129,7 +129,8 @@ VALUES
 		`order`.create_time,
 		`order`.stop_time,
 		`order`.order_status,
-		`order`.flag
+		`order`.flag,
+		`order`.order_price
 		FROM
 		`order`
 		WHERE

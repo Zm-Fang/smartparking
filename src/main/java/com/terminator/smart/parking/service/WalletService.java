@@ -21,17 +21,17 @@ public interface WalletService
 
     /**
      *  充值或者支付
-     * @param username  需要充值或支付的用户
+     * @param userId  需要充值或支付的用户
      * @param money     需要充值或者支付的金额
      * @param i         判断充值还是支付，1位充值，0位支付
      * @return          受影响行数
      */
-    int updateWallet(String username,String money,int i);
+    int updateWallet(Integer userId,Double money,int i);
 
     /**
      *  查询余额
      * @param userId   需要查询余额的用户
      * @return          余额
      */
-   List<Wallet> selectBalance(String userId);
+   List<Wallet> selectBalance(Integer userId);
 }

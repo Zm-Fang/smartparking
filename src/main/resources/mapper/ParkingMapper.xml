@@ -17,6 +17,23 @@
         parking.parking_flag = 1;
     </select>
 
+    <select id="selectParkingByParkingId" resultType="com.terminator.smart.parking.entity.Parking">
+        SELECT
+        parking.parking_id,
+        parking.parking_name,
+        parking.parking_price,
+        parking.parking_site,
+        parking.parking_total,
+        parking.parking_usable,
+        parking.parking_flag
+        FROM
+        parking
+        WHERE
+        parking.parking_id = #{id}
+        AND
+        parking.parking_flag = 1;
+    </select>
+
     <insert id="insertParking" parameterType="com.terminator.smart.parking.entity.Parking">
         INSERT INTO `parking` (
             `parking_name`,
@@ -45,32 +62,25 @@
 
     <update id="updateParkingByParkingId" parameterType="com.terminator.smart.parking.entity.Parking">
         UPDATE `smartparking`.`parking`
-        SET
-         `parking_name` = #{parkingName},
-         `parking_price` = #{parkingPrice},
-         `parking_site` = #{parkingSite},
-         `parking_total` = #{parkingTotal},
-         `parking_usable` = #{parkingUsable}
+        <set>
+            <if test="null!=parkingName">
+                `parking_name` = #{parkingName},
+            </if>
+            <if test="0!=parkingPrice">
+                `parking_price` = #{parkingPrice},
+            </if>
+            <if test="null!=parkingSite">
+                `parking_site` = #{parkingSite},
+            </if>
+            <if test="0!=parkingTotal">
+                `parking_total` = #{parkingTotal},
+            </if>
+            <if test="0!=parkingUsable">
+                `parking_usable` = #{parkingUsable},
+            </if>
+        </set>
         WHERE
         `parking_id` = #{parkingId};
     </update>
 
-    <select id="search" resultType="com.terminator.smart.parking.entity.Parking">
-    select parking.parking_id,parking.parking_name,parking.parking_price,parking.parking_usable
-    from parking
-    where parking_name like CONCAT(CONCAT('%', #{parkingName}), '%')
-  </select>
-
-    <select id="selectByParkingId" resultType="com.terminator.smart.parking.entity.Parking">
-        select * from parking
-        where
-        `parking_id`=#{parkingId};
-    </select>
-
-    <select id="selectByParkingSite" resultType="com.terminator.smart.parking.entity.Parking">
-        select parking.parking_id,parking.parking_name,parking.parking_price,parking.parking_usable
-        from parking
-        where
-        `parking_site`=#{parkingSite};
-    </select>
 </mapper>

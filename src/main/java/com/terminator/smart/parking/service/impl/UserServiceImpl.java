@@ -49,4 +49,19 @@ public class UserServiceImpl implements UserService {
         }
         return rSet;
     }
+
+    @Override
+    public List<User> selectAll() {
+        return userDao.selectAll();
+    }
+
+    @Override
+    public int deleteUserByUserId(int id) {
+        return userDao.deleteUserByUserId(id);
+    }
+
+    @Override
+    public int resetUsernamePasswordByUserId(int id) {
+        return userDao.resetUsernamePasswordByUserId(id);
+    }
 }

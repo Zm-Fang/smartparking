@@ -24,6 +24,11 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
+    public Parking selectParkingByParkingId(int id) {
+        return parkingDao.selectParkingByParkingId(id);
+    }
+
+    @Override
     public int insertParking(Parking parking) {
         return parkingDao.insertParking(parking);
     }
@@ -34,22 +39,7 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
-    public List<Parking> selectByParkingId(int id) {
-        return parkingDao.selectByParkingId(id);
-    }
-
-    @Override
     public int updateParkingByParkingId(Parking parking) {
         return parkingDao.updateParkingByParkingId(parking);
-    }
-
-    @Override
-    public List<Parking> search(String parkingName) {
-        return parkingDao.search(parkingName);
-    }
-
-    @Override
-    public List<Parking> selectByParkingSite(String parkingSite) {
-        return parkingDao.selectByParkingSite(parkingSite);
     }
 }

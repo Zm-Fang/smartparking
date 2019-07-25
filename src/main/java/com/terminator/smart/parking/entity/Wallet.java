@@ -3,6 +3,7 @@ package com.terminator.smart.parking.entity;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
+
 /**
 *@Description 
 *@Author 周智华

@@ -75,6 +75,20 @@
     </dependency>
     <!-- servlet end -->
 
+    <!-- thymeleaf start -->
+    <!--引入模版引擎thymeleaf-->
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf-spring4</artifactId>
+      <version>2.1.2.RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>org.thymeleaf</groupId>
+      <artifactId>thymeleaf</artifactId>
+      <version>2.1.2.RELEASE</version>
+    </dependency>
+    <!-- thymeleaf end -->
+
     <!-- unit test start -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -87,20 +101,6 @@
       <version>4.12</version>
     </dependency>
     <!-- unit test end -->
-
-
-    <!--引入模版引擎thymeleaf start-->
-    <dependency>
-      <groupId>org.thymeleaf</groupId>
-      <artifactId>thymeleaf-spring4</artifactId>
-      <version>2.1.2.RELEASE</version>
-    </dependency>
-    <dependency>
-      <groupId>org.thymeleaf</groupId>
-      <artifactId>thymeleaf</artifactId>
-      <version>2.1.2.RELEASE</version>
-    </dependency>
-    <!--引入模版引擎thymeleaf end-->
   </dependencies>
 
   <build>

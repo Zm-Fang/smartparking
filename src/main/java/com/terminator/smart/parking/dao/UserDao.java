@@ -23,7 +23,7 @@ public interface UserDao {
     //修改用户信息
     int updateUserInfo(User user);
 
-    User getById(long id);
+
 
 
     /**

@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Order implements Serializable {
-    private Date startTime;
-    private Double orderPirce;
+    private String startTime;
+    private Double orderPrice;
     private int userId;
     private String username;
     private int orderId;
     private String licenseNumber;
     private String parkingName;
-    private Date createTime;
-    private Date stopTime;
+    private String createTime;
+    private String stopTime;
     private String orderStatus;
     private int flag;
     private int isRemove;
@@ -20,9 +20,9 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Date startTime, Double orderPirce, int userId, String username, int orderId, String licenseNumber, String parkingName, Date createTime, Date stopTime, String orderStatus, int flag, int isRemove) {
+    public Order(String startTime, Double orderPrice, int userId, String username, int orderId, String licenseNumber, String parkingName, String createTime, String stopTime, String orderStatus, int flag, int isRemove) {
         this.startTime = startTime;
-        this.orderPirce = orderPirce;
+        this.orderPrice = orderPrice;
         this.userId = userId;
         this.username = username;
         this.orderId = orderId;
@@ -35,20 +35,20 @@ public class Order implements Serializable {
         this.isRemove = isRemove;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Double getOrderPirce() {
-        return orderPirce;
+    public Double getOrderPrice() {
+        return orderPrice;
     }
 
-    public void setOrderPirce(Double orderPirce) {
-        this.orderPirce = orderPirce;
+    public void setOrderPrice(Double orderPrice) {
+        this.orderPrice = orderPrice;
     }
 
     public int getUserId() {
@@ -91,19 +91,19 @@ public class Order implements Serializable {
         this.parkingName = parkingName;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 
-    public Date getStopTime() {
+    public String getStopTime() {
         return stopTime;
     }
 
-    public void setStopTime(Date stopTime) {
+    public void setStopTime(String stopTime) {
         this.stopTime = stopTime;
     }
 
@@ -133,7 +133,7 @@ public class Order implements Serializable {
 
     @Override
     public String toString() {
-        return "Order{" + "startTime=" + startTime + ", orderPirce=" + orderPirce + ", " +
+        return "Order{" + "startTime=" + startTime + ", orderPrice=" + orderPrice + ", " +
                 "userId=" + userId + ", username='" + username + '\'' + ", orderId=" +
                 orderId + ", licenseNumber='" + licenseNumber + '\'' + ", parkingName='" +
                 parkingName + '\'' + ", createTime=" + createTime + ", stopTime=" + stopTime + "," +

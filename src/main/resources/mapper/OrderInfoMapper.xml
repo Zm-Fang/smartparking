@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.terminator.smart.parking.dao.OrderDao">
-    <!--通过id返回订单信息-->
+    <!--通过订单id返回订单信息-->
     <select id="selectId" resultType="com.terminator.smart.parking.entity.Order">
 		 SELECT
+		 `order`.user_id,
 		`order`.order_id,
 		`order`.username,
 		`order`.license_number,
@@ -11,23 +12,42 @@
 		`order`.create_time,
 		`order`.stop_time,
 		`order`.order_status,
-		`order`.flag
+		`order`.flag,
+		`order`.start_time,
+		`order`.order_price
 		FROM
 		`order`
 		WHERE
 		`order`.order_id = #{orderId}
+		and
+		flag =1;
 
 	</select>
+
+
 	<!--修改订单信息-->
 	<update id="update" parameterType="com.terminator.smart.parking.entity.Order">
           UPDATE `smartparking`.`order`
-		SET
-		 `username` = #{username},
-		 `license_number` = #{licenseNumber},
-		 `parking_name` = #{parkingName},
-		 `create_time` = #{createTime},
-		 `stop_time` = #{stopTime},
-		 `order_status` = #{orderStatus}
+		<set>
+			<if test="username!=null">
+				`username` = #{username},
+			</if>
+			<if test="licenseNumber!=null">
+				`license_number` = #{licenseNumber},
+			</if>
+			<if test="parkingName!=null">
+				`parking_name` = #{parkingName},
+			</if>
+			<if test="createTime!=null">
+				`create_time` = #{createTime},
+			</if>
+			<if test="stopTime!=null">
+				`stop_time` = #{stopTime},
+			</if>
+			<if test="orderStatus!=null">
+				`order_status` = #{orderStatus}
+			</if>
+		</set>
 		WHERE
 			(`order_id` = #{orderId});
 	</update>
@@ -41,31 +61,83 @@
 	       (`order_id` = #{orderId});
 
 	</update>
+    <!--已完成订单-->
+	<update id="success" parameterType="com.terminator.smart.parking.entity.Order">
+            UPDATE `smartparking`.`order`
+            SET
+           `order_status` = '已完成订单'
+           WHERE
+	       (`order_id` = #{orderId});
+
+	</update>
+    <!--失效订单-->
+	<update id="loser" parameterType="com.terminator.smart.parking.entity.Order">
+            UPDATE `smartparking`.`order`
+            SET
+           `order_status` = '已失效'
+           WHERE
+	       (`order_id` = #{orderId});
+
+	</update>
+	<!--预约成功订单-->
+	<update id="successful" parameterType="com.terminator.smart.parking.entity.Order">
+            UPDATE `smartparking`.`order`
+            SET
+           `order_status` = '预约成功'
+           WHERE
+	       (`order_id` = #{orderId});
+
+	</update>
+
+
 
 
 	<!--添加订单-->
-	<insert id="insert" parameterType="com.terminator.smart.parking.entity.Order">
+	<insert id="insert" parameterType="com.terminator.smart.parking.entity.Order" useGeneratedKeys="true" keyProperty="orderId" keyColumn="order_id">
 	INSERT INTO `smartparking`.`order` (
-	`username`,
-	`license_number`,
 	`parking_name`,
 	`create_time`,
 	`stop_time`,
+	`user_id`,
+	`username`,
+	`license_number`,
 	`order_status`,
-	`flag`
+	`start_time`,
+	`order_price`
 )
 VALUES
 	(
 		#{username},
-		#{licenseNumber},
-		#{parkingName},
 		#{createTime},
 		#{stopTime},
-		#{orderStatus},
-		#{flag}
+		#{userId},
+		#{username},
+		#{licenseNumber},
+		'未付款',
+		#{startTime},
+		#{orderPrice}
 	);
-
 	</insert>
+
+	<!--通过用户id查询该用户所有订单-->
+    <select id="selectByUserId" resultType="com.terminator.smart.parking.entity.Order">
+		 SELECT
+		`order`.order_id,
+		`order`.username,
+		`order`.license_number,
+		`order`.parking_name,
+		`order`.create_time,
+		`order`.stop_time,
+		`order`.order_status,
+		`order`.flag
+		FROM
+		`order`
+		WHERE
+		`order`.user_id = #{userId}
+		 and
+		flag = 1;
+	</select>
+
 
 
 

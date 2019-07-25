@@ -101,7 +101,18 @@
       <version>2.1.2.RELEASE</version>
     </dependency>
     <!--引入模版引擎thymeleaf end-->
+
+
+    <!--引入jstl start-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <!--引入jstl end-->
+
   </dependencies>
+
 
   <build>
     <finalName>day54_permission</finalName>

@@ -1,5 +1,6 @@
 package com.terminator.smart.parking.controller;
 import com.terminator.smart.parking.entity.Order;
+import com.terminator.smart.parking.entity.User;
 import com.terminator.smart.parking.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -38,12 +40,10 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/selectByUserId",method = RequestMethod.GET)
-    public String selectByUserId(ModelMap modelMap) {
-        List<Order> orders = orderService.selectByUserId(1);
+    public String selectByUserId(HttpSession session, ModelMap modelMap) {
+        User user = (User) session.getAttribute("USER_LOGIN");
+        List<Order> orders = orderService.selectByUserId(user.getUserId());
         modelMap.addAttribute("orderList",orders);
-        System.out.println("========2=========="+orders);
-        String msg = (String) modelMap.get("msg");
-        System.out.println("123456"+msg);
         return "order";
     }
 

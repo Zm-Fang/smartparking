@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
 public interface UserDao {
 
@@ -23,4 +24,24 @@ public interface UserDao {
     int updateUserInfo(User user);
 
     User getById(long id);
+
+
+    /**
+     * @Description 管理员查找所有用户
+     * @Author 方泽谋
+     * @DateTime 2019/7/23 23:53
+     */
+    List<User> selectAll();
+    /**
+     * @Description 管理员通过 id 删除用户
+     * @Author 方泽谋
+     * @DateTime 2019/7/24 14:23
+     */
+    int deleteUserByUserId(int id);
+    /**
+     * @Description 管理员通过 id 重置用户
+     * @Author 方泽谋
+     * @DateTime 2019/7/24 16:40
+     */
+    int resetUsernamePasswordByUserId(int id);
 }

@@ -22,7 +22,7 @@ public interface NewsDao {
     List<News> selectAll();
 
     /**
-    *@Description 通过用户 user_id 获取消息
+    *@Description 通过用户 user_id 获取消息，包括系统消息和个人的订单消息
     *@param id 用户user_id
     *@return 消息集合
     *@Author 方泽谋

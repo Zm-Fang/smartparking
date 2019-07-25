@@ -3,6 +3,7 @@ package com.terminator.smart.parking.entity;
 import org.springframework.stereotype.Component;
 
 import java.math.BigInteger;
+
 /**
 *@Description 
 *@Author 周智华
@@ -12,49 +13,49 @@ import java.math.BigInteger;
 @Component
 public class Wallet
 {
-    private BigInteger wallet_id;
-    private String user_id;
-    private Double wallet_balance;
+    private BigInteger walletId;
+    private String userId;
+    private Double walletBalance;
 
     public Wallet() {
     }
 
-    public Wallet(BigInteger wallet_id, String user_id, Double wallet_balance) {
-        this.wallet_id = wallet_id;
-        this.user_id = user_id;
-        this.wallet_balance = wallet_balance;
+    public Wallet(BigInteger walletId, String userId, Double walletBalance) {
+        this.walletId = walletId;
+        this.userId = userId;
+        this.walletBalance = walletBalance;
     }
 
-    public BigInteger getWallet_id() {
-        return wallet_id;
+    public BigInteger getWalletId() {
+        return walletId;
     }
 
-    public void setWallet_id(BigInteger wallet_id) {
-        this.wallet_id = wallet_id;
+    public void setWalletId(BigInteger walletId) {
+        this.walletId = walletId;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public Double getWallet_balance() {
-        return wallet_balance;
+    public Double getWalletBalance() {
+        return walletBalance;
     }
 
-    public void setWallet_balance(Double wallet_balance) {
-        this.wallet_balance = wallet_balance;
+    public void setWalletBalance(Double walletBalance) {
+        this.walletBalance = walletBalance;
     }
 
     @Override
     public String toString() {
         return "Wallet{" +
-                "wallet_id=" + wallet_id +
-                ", user_id='" + user_id + '\'' +
-                ", wallet_balance=" + wallet_balance +
+                "walletId=" + walletId +
+                ", userId='" + userId + '\'' +
+                ", walletBalance=" + walletBalance +
                 '}';
     }
 }

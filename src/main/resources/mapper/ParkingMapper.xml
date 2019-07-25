@@ -17,6 +17,23 @@
         parking.parking_flag = 1;
     </select>
 
+    <select id="selectParkingByParkingId" resultType="com.terminator.smart.parking.entity.Parking">
+        SELECT
+        parking.parking_id,
+        parking.parking_name,
+        parking.parking_price,
+        parking.parking_site,
+        parking.parking_total,
+        parking.parking_usable,
+        parking.parking_flag
+        FROM
+        parking
+        WHERE
+        parking.parking_id = #{id}
+        AND
+        parking.parking_flag = 1;
+    </select>
+
     <insert id="insertParking" parameterType="com.terminator.smart.parking.entity.Parking">
         INSERT INTO `parking` (
             `parking_name`,

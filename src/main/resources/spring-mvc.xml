@@ -31,11 +31,9 @@
         <property name="templateMode" value="HTML5" />
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
-
     <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver" />
     </bean>
-
     <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
         <property name="characterEncoding"  value="UTF-8" />
@@ -43,4 +41,5 @@
 
     <!--&lt;!&ndash; 静态资源映射 &ndash;&gt;-->
     <mvc:resources mapping="/static/**" location="/static/" cache-period="31536000"/>
+    <mvc:default-servlet-handler/>
 </beans>

@@ -13,6 +13,8 @@ public interface ParkingService {
 
     List<Parking> selectAll();
 
+    Parking selectParkingByParkingId(int id);
+
     int insertParking(Parking parking);
 
     int deleteParkingByParkingId(int id);

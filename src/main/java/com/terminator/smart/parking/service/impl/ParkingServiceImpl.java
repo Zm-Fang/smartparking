@@ -24,6 +24,11 @@ public class ParkingServiceImpl implements ParkingService {
     }
 
     @Override
+    public Parking selectParkingByParkingId(int id) {
+        return parkingDao.selectParkingByParkingId(id);
+    }
+
+    @Override
     public int insertParking(Parking parking) {
         return parkingDao.insertParking(parking);
     }

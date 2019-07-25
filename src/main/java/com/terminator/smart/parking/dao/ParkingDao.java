@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-import java.util.Queue;
 
 /**
  * @Description 停车场 dao 层，用于数据库交互
@@ -22,6 +21,8 @@ public interface ParkingDao {
      * @DateTime 2019/7/22 22:02
      */
     List<Parking> selectAll();
+
+    Parking selectParkingByParkingId(int id);
 
     /**
      * @Description 添加一个停车场信息
@@ -55,7 +56,7 @@ public interface ParkingDao {
     *@Author 刘新全
     *@DateTime 2019/7/23 17:04
     */
-    List<Parking> search(@RequestParam("parkingName")String parkingName);
+    List<Parking> search(@RequestParam("parkingName") String parkingName);
 
 
     /**

@@ -18,7 +18,7 @@
         news.news_flag = 1
     </select>
 
-    <select id="selectByUserId" parameterType="com.terminator.smart.parking.entity.News">
+    <select id="selectByUserId" resultType="com.terminator.smart.parking.entity.News">
         SELECT
         news.news_id,
         news.news_title,
@@ -33,7 +33,9 @@
         WHERE
         news.news_flag = 1
         AND
-        news.news_type = '系统消息'
+        news.user_id = #{userId}
+        OR
+        news.news_type = '系统消息';
     </select>
 
     <insert id="insertNews" parameterType="com.terminator.smart.parking.entity.News">

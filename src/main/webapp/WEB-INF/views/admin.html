@@ -13,22 +13,18 @@
 <body>
     <!--Header-part-->
     <div id="header">
-      <h1><a href="dashboard.html">智慧停车系统平台</a></h1>
+      <h1 style="width: 250px"><a href="dashboard.html">智慧停车系统平台管理员端</a></h1>
     </div>
     <!--close-Header-part--> 
 
     <!--top-Header-menu-->
-    <div id="user-nav" class="navbar navbar-inverse">
+    <div id="user-nav" class="navbar navbar-inverse" style="right: 15px">
         <ul class="nav">
             <li  class="dropdown" id="profile-messages" >
                 <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon icon-user"></i>&nbsp;
+					<i class="icon icon-user"></i>
                     <span class="text">
-						欢迎你，admin</span>&nbsp;
+						欢迎你，admin</span>
                     <b class="caret"></b>
                 </a>
            </li>
@@ -48,37 +44,24 @@
     <!--sidebar-menu-->
     <div id="sidebar" style="OVERFLOW-Y: auto; OVERFLOW-X:hidden;">
         <ul>
-		    <li class="submenu active">
-                <a class="menu_a" link="/parking/index2"> <i class="icon icon-th"></i> <span>搜索界面</span></a>
+            <li class="submenu active">
+                <a class="menu_a" link="/admin/toAdminHome"> <i class="icon icon-th"></i> <span>首页</span></a>
             </li>
-          
-            <li class="submenu">
-				<a href="#">
-                    <i class="icon icon-th"></i> 
-                    <span>消息界面</span> 
 
-                </a>
-				<ul>
-                    <li><a class="menu_a" link="buttons.html"><i class="icon icon-caret-right"></i> 系统消息</a></li>
-                    <li><a class="menu_a" link="grid.html"><i class="icon icon-caret-right"></i>订单消息</a></li>
-                  
-                </ul>
+            <li class="submenu">
+                <a class="menu_a" link="/admin/toParking"> <i class="icon icon-th"></i> <span>管理停车场</span></a>
             </li>
-			<li class="submenu">
-                <a class="menu_a" link="/order/selectByUserId"> <i class="icon icon-th"></i> <span>订单列表</span></a>
+
+            <li class="submenu">
+                <a class="menu_a" link="/admin/toUser"> <i class="icon icon-th"></i> <span>管理用户</span></a>
             </li>
-         
-            <li class="submenu"> 
-                <a href="#">
-                    <i class="icon icon-th"></i>
-                    <span>我的</span>
-                </a>
-                <ul>
-                    <li><a class="menu_a" link="error403.html"><i class="icon icon-caret-right"></i>用户信息</a></li>
-                    <li><a class="menu_a" link="/wallet/wallet"><i class="icon icon-caret-right"></i>我的钱包</a></li>
-                    <li><a class="menu_a" link="error405.html"><i class="icon icon-caret-right"></i>意见反馈</a></li>
-               
-                </ul>
+
+            <li class="submenu">
+                <a class="menu_a" link="/admin/toNews"> <i class="icon icon-th"></i> <span>推送系统消息</span></a>
+            </li>
+
+            <li class="submenu">
+                <a class="menu_a" link="/admin/toOpinion"> <i class="icon icon-th"></i> <span>查看反馈意见</span></a>
             </li>
         </ul>
     </div>
@@ -88,10 +71,10 @@
     <div id="content">
         <!--breadcrumbs-->
         <div id="content-header">
-          <div id="breadcrumb"> <a href="/parking/first" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+            <div id="breadcrumb"> <a href="/admin/toAdmin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
         </div>
         <!--End-breadcrumbs-->
-        <iframe src="/parking/index2" id="iframe-main" frameborder='0' style="width:100%;"></iframe>
+        <iframe src="/admin/toAdminHome" id="iframe-main" frameborder='0' style="width:100%;"></iframe>
     </div>
     <!--end-main-container-part-->
 

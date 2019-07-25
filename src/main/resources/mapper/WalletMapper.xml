@@ -9,26 +9,26 @@
         )
         VALUES
 	    (
-	    #{user_id},
-	    #{wallet_balance}
+	    #{userId},
+	    #{walletBalance}
 	    )
     </insert>
 
     <update id="updateWallet">
         UPDATE wallet
         SET
-        wallet_balance = #{wallet_balance}
+        wallet_balance = #{walletBalance}
         WHERE
-	    user_id = #{user_id}
+	    user_id = #{userId}
     </update>
 
     <select id="selectBalance" resultType="com.terminator.smart.parking.entity.Wallet">
         SELECT
-	    wallet_balance
-        FROM
-	    wallet
-        WHERE
-	    user_id = #{user_id}
+	*
+FROM
+	wallet
+WHERE
+	user_id = #{userId}
     </select>
 
 </mapper>

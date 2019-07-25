@@ -25,6 +25,11 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public List<News> selectByUserId(int id) {
+        return newsDao.selectByUserId(id);
+    }
+
+    @Override
     public int insertNews(News news) {
         return newsDao.insertNews(news);
     }

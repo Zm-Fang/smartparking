@@ -11,16 +11,18 @@ public class Opinion {
     private int opinionId;
     private String opinionTitle;
     private String opinionBody;
+    private String opinionEmail;
     private Date opinionTime;
     private int opinionFlag;
 
     public Opinion() {
     }
 
-    public Opinion(int opinionId, String opinionTitle, String opinionBody, Date opinionTime, int opinionFlag) {
+    public Opinion(int opinionId, String opinionTitle, String opinionBody, String opinionEmail, Date opinionTime, int opinionFlag) {
         this.opinionId = opinionId;
         this.opinionTitle = opinionTitle;
         this.opinionBody = opinionBody;
+        this.opinionEmail = opinionEmail;
         this.opinionTime = opinionTime;
         this.opinionFlag = opinionFlag;
     }
@@ -49,6 +51,14 @@ public class Opinion {
         this.opinionBody = opinionBody;
     }
 
+    public String getOpinionEmail() {
+        return opinionEmail;
+    }
+
+    public void setOpinionEmail(String opinionEmail) {
+        this.opinionEmail = opinionEmail;
+    }
+
     public Date getOpinionTime() {
         return opinionTime;
     }
@@ -71,6 +81,7 @@ public class Opinion {
                 "opinionId=" + opinionId +
                 ", opinionTitle='" + opinionTitle + '\'' +
                 ", opinionBody='" + opinionBody + '\'' +
+                ", opinionEmail=" + opinionEmail +
                 ", opinionTime=" + opinionTime +
                 ", opinionFlag=" + opinionFlag +
                 '}';

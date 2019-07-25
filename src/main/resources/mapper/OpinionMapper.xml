@@ -7,6 +7,7 @@
         opinion.opinion_id,
         opinion.opinion_title,
         opinion.opinion_body,
+        opinion.opinion_email,
         opinion.opinion_time,
         opinion.opinion_flag
         FROM
@@ -19,13 +20,15 @@
         INSERT INTO `opinion` (
             `opinion_title`,
             `opinion_body`,
+            `opinion_email`,
             `opinion_time`
         )
         VALUES
             (
                 #{opinionTitle},
                 #{opinionBody},
-                #{opinionTime}
+                #{opinionEmail},
+                now()
             );
     </insert>
 

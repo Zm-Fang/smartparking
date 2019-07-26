@@ -3,12 +3,18 @@
 <mapper namespace="com.terminator.smart.parking.dao.BankCardDao">
 
     <insert id="addBankCard" parameterType="com.terminator.smart.parking.entity.BankCard">
-        INSERT INTO bank_card (username, bank_name, card_id)
+        INSERT INTO bank_card (
+	user_id,
+	username,
+	bank_name,
+	card_id
+)
 VALUES
 	(
+		#{userId},
 		#{username},
 		#{bankName},
-		#{cardId}
+		#{CardId}
 	)
     </insert>
 
@@ -25,7 +31,7 @@ WHERE
 FROM
 	bank_card
 WHERE
-	card_id = #{cardId}
+	user_id = #{userId}
     </select>
 
 </mapper>

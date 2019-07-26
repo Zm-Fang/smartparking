@@ -32,6 +32,8 @@ FROM
 	bank_card
 WHERE
 	user_id = #{userId}
+	AND
+	flag = 1;
     </select>
 
 </mapper>

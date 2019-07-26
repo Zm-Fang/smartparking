@@ -80,12 +80,12 @@ public class ParkingController {
 
         User user = (User) request.getSession().getAttribute("USER_LOGIN");
 
-        String startTime=data_date_format+" "+start_time+":00:00";
+        String createTime =data_date_format+" "+start_time+":00:00";
         String stopTime=data_date_format+" "+end_time+":00:00";
 
         Date date1 = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String createTime = format.format(date1);
+        String startTime = format.format(date1);
 
         Double orderPrice=((end_time)-(start_time))*parkingPrice;
         Order order = new Order();

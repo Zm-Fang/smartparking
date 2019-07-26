@@ -43,6 +43,27 @@ public interface OrderDao {
     int deleteByFlag(int id);
 
     /**
+     * 已完成订单
+     * @param id
+     * @return
+     */
+    int success(int id);
+
+    /**
+     * 失效订单
+     * @param id
+     * @return
+     */
+    int loser(int id);
+
+    /**
+     * 预约成功订单
+     * @param id
+     * @return
+     */
+    int successful(int id);
+
+    /**
      * 添加订单
      * @param order
      * @return

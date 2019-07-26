@@ -31,7 +31,7 @@ public class WalletController
     @RequestMapping(value = "/wallet",method = RequestMethod.GET)
     public String toWallet(ModelMap modelMap)
     {
-        List<Wallet> wallets = walletService.selectBalance("zs");
+        List<Wallet> wallets = walletService.selectBalance(1);
         modelMap.addAttribute("wallets",wallets);
         return "wallet";
     }
@@ -54,10 +54,10 @@ public class WalletController
      * @return
      */
     @RequestMapping(value = "/rechargeWallet",method = RequestMethod.GET)
-    public String toRechargeWallet(String money,ModelMap modelMap,HttpServletRequest request)
+    public String toRechargeWallet(Double money,ModelMap modelMap,HttpServletRequest request)
     {
         String username = (String) request.getSession().getAttribute("username");
-        walletService.updateWallet("zs",money,1);
+        walletService.updateWallet(1,money,1);
         return "forward:wallet.toWallet";
     }
 
@@ -68,11 +68,13 @@ public class WalletController
      * @param request
      * @return
      */
-    @RequestMapping(value = "/payment ",method = RequestMethod.GET)
-    public String toPaymentWallet(String money,ModelMap modelMap,HttpServletRequest request)
+    @RequestMapping(value = "/payment",method = RequestMethod.POST)
+    public String toPaymentWallet(Double money,int orderId,ModelMap modelMap,HttpServletRequest request)
     {
+        System.out.println("fddfsd:"+money);
         String username = (String) request.getSession().getAttribute("username");
-        walletService.updateWallet("zs",money,0);
-        return "forward:wallet.toWallet";
+        walletService.updateWallet(1,money,0);
+//        return "forward:wallet.toWallet";
+        return "redirect:/order/successful?orderId="+orderId;
     }
 }

@@ -14,13 +14,13 @@ import java.math.BigInteger;
 public class Wallet
 {
     private BigInteger walletId;
-    private String userId;
+    private Integer userId;
     private Double walletBalance;
 
     public Wallet() {
     }
 
-    public Wallet(BigInteger walletId, String userId, Double walletBalance) {
+    public Wallet(BigInteger walletId, Integer userId, Double walletBalance) {
         this.walletId = walletId;
         this.userId = userId;
         this.walletBalance = walletBalance;
@@ -34,11 +34,11 @@ public class Wallet
         this.walletId = walletId;
     }
 
-    public String getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

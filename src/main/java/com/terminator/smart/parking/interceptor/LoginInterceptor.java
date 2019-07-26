@@ -16,7 +16,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         User user = (User) httpServletRequest.getSession().getAttribute("USER_LOGIN");
         if (user==null){
             // 用户未登录，重定向到登录页
-            httpServletResponse.getWriter().write("请先进行登入");
             httpServletResponse.sendRedirect("/user/login");
             return false;
         }

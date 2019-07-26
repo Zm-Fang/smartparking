@@ -13,15 +13,15 @@
     <script type="text/javascript">
         $(function () {
             var flag;
-                $.post("/user/ajaxCheckLogin",function (data) {
-                    if (data==1)
-                    {
-                        flag=true;
-                    }
-                    else {
-                        flag=false;
-                    }
-                });
+            $.post("/user/ajaxCheckLogin",function (data) {
+                if (data==1)
+                {
+                    flag=true;
+                }
+                else {
+                    flag=false;
+                }
+            });
 
             $(".ajaxCheckLogin").click(function () {
                 if (!flag){
@@ -29,7 +29,18 @@
                     $(".ajaxCheckLogin:eq(0)").src("#");
                 }
             })
+
+            $.post("/user/check",function (data) {
+                if (data==1)
+                {
+
+                    $("#name").html('<font color="#a4d3ee"><span th:text="${user}"></span></font>');
+                    // $("#re").html('<font color="#a4d3ee"><span th:text="${erro}"></span></font>');
+                    $("#dist").attr("style","display: block");
+                }
+            })
         })
+
 
     </script>
 </head>
@@ -50,11 +61,13 @@
 						未登录</span>
                     <b class="caret"></b>
                 </a>
+                <!--<a th:text="${msg}"></a>
+-->
             </li>
-            <li class="">
-                <a title="" href="/user/register">
-                    <i class="icon icon-share-alt"></i>
-                    <span class="text">注册</span></a>
+            <li class="" id="dist" style="display: none">
+                <a title="" href="/user/logout">
+                    <i class="icon-off"></i>
+                    <span class="text" style="color: #a4d3ee" id="re">注销</span></a>
             </li>
         </ul>
     </div>
@@ -95,7 +108,7 @@
                 <ul>
                     <li><a class="menu_a ajaxCheckLogin" href="/user/setting"><i class="icon icon-caret-right"></i>用户信息</a></li>
                     <li><a class="menu_a ajaxCheckLogin" link="/wallet/wallet"><i class="icon icon-caret-right"></i>我的钱包</a></li>
-                    <li><a class="menu_a ajaxCheckLogin" link="error405.html"><i class="icon icon-caret-right"></i>意见反馈</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" link="/opinion/opinion"><i class="icon icon-caret-right"></i>意见反馈</a></li>
                
                 </ul>
             </li>

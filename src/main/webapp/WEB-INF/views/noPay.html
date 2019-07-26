@@ -53,7 +53,9 @@
                                 <td th:text="${order.getOrderStatus()}"></td>
                                 <td th:text="${order.getOrderPrice()}"></td>
                                 <td>
-                                    <form action="" method="post">
+                                    <form action="/wallet/payment" method="post">
+                                        <input type="hidden" name="money" th:value="${order.getOrderPrice()}" />
+                                        <input type="hidden" name="orderId" th:value="${order.getOrderId()}" />
                                         <input type="submit" value="立即付款" class="btn btn-info" />
                                     </form>
                                     <form action="/parking/index2" method="get">

@@ -38,6 +38,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public int success(int id) {
+        return  orderDao.success(id);
+    }
+
+    @Override
+    public int loser(int id) {
+        return  orderDao.loser(id);
+    }
+
+    @Override
+    public int successful(int id) {
+        return orderDao.successful(id);
+    }
+
+    @Override
     public int insert(Order order) {
         return orderDao.insert(order);
     }

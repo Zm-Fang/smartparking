@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertUser(User user)
     {
-        wallet.setUserId(user.getUsername());
+        wallet.setUserId(user.getUserId());
         wallet.setWalletBalance(0.00);
         int rSet = userDao.insertUser(user);
         if (rSet > 0)
@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService {
     public List<User> selectAll() {
         return userDao.selectAll();
     }
+
 
     @Override
     public int deleteUserByUserId(int id) {

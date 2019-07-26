@@ -68,18 +68,18 @@ public class ParkingController {
      * @return
      */
     @RequestMapping(value = "/reserve",method = RequestMethod.POST)
-    public String reserve(@RequestParam("parkingPrice")double parkingPrice,
+    public String reserve(Parking parking,
+                          @RequestParam("parkingPrice")double parkingPrice,
                           @RequestParam("parkingName")String parkingName,
                           @RequestParam("data-date-format")String data_date_format,
                           @RequestParam("start_time")Integer start_time,
                           @RequestParam("end_time")Integer end_time,
                           HttpServletRequest request)
     {
-       // User user = (User) request.getSession().getAttribute("user");
-        User user = new User();
-        user.setUserId(1);
-        user.setUsername("quange");
-        user.setLicenseNumber("1234465465");
+        parking.setParkingUsable(parking.getParkingUsable()-1);
+
+        User user = (User) request.getSession().getAttribute("USER_LOGIN");
+
         String createTime=data_date_format+" "+start_time+":00:00";
         String stopTime=data_date_format+" "+end_time+":00:00";
 
@@ -87,9 +87,7 @@ public class ParkingController {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String startTime = format.format(date1);
 
-
         Double orderPrice=((end_time)-(start_time))*parkingPrice;
-
         Order order = new Order();
         order.setUserId(user.getUserId());
         order.setUsername(user.getUsername());
@@ -102,7 +100,14 @@ public class ParkingController {
         order.setOrderPrice(orderPrice);
         System.out.println("----------"+order);
         request.getSession().setAttribute("order",order);
-        return "forward:/order/insert";
+        System.out.println("===="+parking);
+
+        boolean flag = parkingService.updateByOrderSuccess(parking);
+        if (flag){
+            return "forward:/order/insert";
+        }
+        return "index";
+
     }
 
 

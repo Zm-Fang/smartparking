@@ -57,4 +57,13 @@ public class ParkingServiceImpl implements ParkingService {
     public List<Parking> selectByParkingSite(String parkingSite) {
         return parkingDao.selectByParkingSite(parkingSite);
     }
+
+    @Override
+    public boolean updateByOrderSuccess(Parking parking) {
+        int i = parkingDao.updateByOrderSuccess( parking);
+        if (i==1){
+            return true;
+        }
+        return false;
+    }
 }

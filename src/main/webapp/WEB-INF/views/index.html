@@ -9,6 +9,29 @@
     <link rel="stylesheet" href="../../static/css/matrix-style.css" />
     <link rel="stylesheet" href="../../static/css/matrix-media.css" />
     <link href="../../static/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script type="text/javascript" src="../../static/js1/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var flag;
+                $.post("/user/ajaxCheckLogin",function (data) {
+                    if (data==1)
+                    {
+                        flag=true;
+                    }
+                    else {
+                        flag=false;
+                    }
+                });
+
+            $(".ajaxCheckLogin").click(function () {
+                if (!flag){
+                    alert("请在右上角进行登入");
+                    $(".ajaxCheckLogin:eq(0)").src("#");
+                }
+            })
+        })
+
+    </script>
 </head>
 <body>
     <!--Header-part-->
@@ -18,24 +41,20 @@
     <!--close-Header-part--> 
 
     <!--top-Header-menu-->
-    <div id="user-nav" class="navbar navbar-inverse">
+    <div id="user-nav" class="navbar navbar-inverse" style="right: 15px">
         <ul class="nav">
             <li  class="dropdown" id="profile-messages" >
-                <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle">
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon icon-user"></i>&nbsp;
+                <a title="" href="/user/login">
+                    <i class="icon icon-user"></i>
                     <span class="text">
-						欢迎你，admin</span>&nbsp;
+						未登录</span>
                     <b class="caret"></b>
                 </a>
-           </li>
+            </li>
             <li class="">
-            <a title="" href="login.html">
-            <i class="icon icon-share-alt"></i>
-                <span class="text">退出系统</span></a>
+                <a title="" href="/user/register">
+                    <i class="icon icon-share-alt"></i>
+                    <span class="text">注册</span></a>
             </li>
         </ul>
     </div>
@@ -59,13 +78,13 @@
 
                 </a>
 				<ul>
-                    <li><a class="menu_a" link="buttons.html"><i class="icon icon-caret-right"></i> 系统消息</a></li>
-                    <li><a class="menu_a" link="grid.html"><i class="icon icon-caret-right"></i>订单消息</a></li>
+                    <li><a class="menu_a  ajaxCheckLogin" link="buttons.html" ><i class="icon icon-caret-right"></i> 系统消息</a></li>
+                    <li><a class="menu_a  ajaxCheckLogin" link="grid.html"><i class="icon icon-caret-right"></i>订单消息</a></li>
                   
                 </ul>
             </li>
 			<li class="submenu">
-                <a class="menu_a" link="/order/selectByUserId"> <i class="icon icon-th"></i> <span>订单列表</span></a>
+                <a class="menu_a ajaxCheckLogin" link="/order/selectByUserId"> <i class="icon icon-th"></i> <span>订单列表</span></a>
             </li>
          
             <li class="submenu"> 
@@ -74,9 +93,9 @@
                     <span>我的</span>
                 </a>
                 <ul>
-                    <li><a class="menu_a" link="error403.html"><i class="icon icon-caret-right"></i>用户信息</a></li>
-                    <li><a class="menu_a" link="/wallet/wallet"><i class="icon icon-caret-right"></i>我的钱包</a></li>
-                    <li><a class="menu_a" link="error405.html"><i class="icon icon-caret-right"></i>意见反馈</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" href="/user/setting"><i class="icon icon-caret-right"></i>用户信息</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" link="/wallet/wallet"><i class="icon icon-caret-right"></i>我的钱包</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" link="error405.html"><i class="icon icon-caret-right"></i>意见反馈</a></li>
                
                 </ul>
             </li>

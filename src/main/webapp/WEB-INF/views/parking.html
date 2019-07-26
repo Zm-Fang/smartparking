@@ -16,6 +16,7 @@
   <script type="text/javascript" src="../../static/js1/jquery-1.8.2.js"></script>
   <script type="text/javascript">
       $(function () {
+          var  flag;
           var a1=$("#a1").html();
           if (a1==0)
           {
@@ -26,19 +27,28 @@
               $("#a2").text("可预订");
           };
 
-          var flag;
+            $.post("/user/ajaxCheckLogin",function (data) {
+                if (data==1)
+                {
+                    flag=true;
+                }
+                else {
+
+                    flag=false;
+                }
+            });
+
           $("#a3").submit(function () {
-              if (a1==0){
-                  flag=false;
-              }else {
-                  flag=true;
-              }
               if (flag){
-                  return true;
+                  if (a1!=0){
+                      return true;
+                  }
+                  alert("该停车场已爆满，请选择其他停车场");
+                  return false;
               }
-              alert("此停车场已爆满，请选择其他停车场进行预订");
+              alert("请在右上角进行登入");
               return false;
-          })
+          });
       });
   </script>
 </head>
@@ -80,6 +90,8 @@
                   <td><p id="a2"></p></td>
                   <input type="hidden" name="parkingName" th:value="${parking.getParkingName()}" />
                   <input type="hidden" name="parkingPrice" th:value="${parking.getParkingPrice()}" />
+                  <input type="hidden" name="parkingUsable" th:value="${parking.getParkingUsable()}" />
+                  <input type="hidden" name="parkingId" th:value="${parking.getParkingId()}" />
                 </tr>
               </tbody>
             </table>

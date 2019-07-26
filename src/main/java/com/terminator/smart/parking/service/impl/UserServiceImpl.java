@@ -28,8 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findUser(String username, String password) {
-        List<User> user = userDao.findUser(username, MD5Util.string2MD5(password));
-        return user;
+        return userDao.findUser(username, password);
     }
 
     @Override

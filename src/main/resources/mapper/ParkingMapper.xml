@@ -90,4 +90,12 @@
         where
         `parking_site`=#{parkingSite};
     </select>
+
+    <update id="updateByOrderSuccess" parameterType="com.terminator.smart.parking.entity.Parking">
+        update `smartparking`.`parking`
+        set
+        `parking_usable` = #{parkingUsable}
+        where
+        `parking_id`=#{parkingId};
+    </update>
 </mapper>

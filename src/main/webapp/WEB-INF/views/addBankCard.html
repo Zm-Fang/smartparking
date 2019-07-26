@@ -24,8 +24,16 @@
           <div class="widget-content">
             <div class="error_ex">
               <h4>添加银行卡</h4>
-              <form action="/wallet/rechargeWallet">
-                <input type="text" name="cardId" /><br/>
+              <form action="/BankCard/addBankCard">
+                请输入卡号：<input type="text" name="cardId" /><br/>
+                对应银行：<select name="bankName">
+                              <option>中国农业银行</option>
+                              <option>中国工商银行</option>
+                              <option>中国建设银行</option>
+                              <option>中国邮政</option>
+                              <option>中国银行</option>
+                              <option>交通银行</option>
+              </select><br/>
                 <input class="btn btn-warning btn-big" type="submit" value="确认添加" />
               </form>
             </div>

@@ -31,6 +31,7 @@ public class WalletServiceImpl implements WalletService
         List<Wallet> wallets = walletDao.selectBalance(userId);
         wallet.setUserId(userId);
         System.out.println("fdfd:"+money);
+        System.out.println(wallets);
         System.out.println(wallets.get(0).getWalletBalance());
         if (i > 0)
         {

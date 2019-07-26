@@ -13,6 +13,7 @@ import java.math.BigInteger;
 public class BankCard
 {
     private BigInteger id;
+    private Integer userId;
     private String username;
     private String bankName;
     private String CardId;
@@ -20,11 +21,20 @@ public class BankCard
     public BankCard() {
     }
 
-    public BankCard(BigInteger id, String username, String bankName, String cardId) {
+    public BankCard(BigInteger id, Integer userId, String username, String bankName, String cardId) {
         this.id = id;
+        this.userId = userId;
         this.username = username;
         this.bankName = bankName;
         CardId = cardId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getBankName() {
@@ -63,6 +73,7 @@ public class BankCard
     public String toString() {
         return "BankCard{" +
                 "id=" + id +
+                "userId=" + userId +
                 ", username='" + username + '\'' +
                 ", bankName='" + bankName + '\'' +
                 ", CardId='" + CardId + '\'' +

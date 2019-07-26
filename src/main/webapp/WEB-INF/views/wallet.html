@@ -11,6 +11,15 @@
 <link rel="stylesheet" href="../../static/css/matrix-media.css" />
 <link href="../../static/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css' />
+  <script type="text/javascript" src="../../static/js/jquery-3.3.1.js"></script>
+  <script type="text/javascript">
+    $(function () {
+        $("#img").attr("src","../../static/bank/"+$("#img2").val()+".gif")
+    })
+  </script>
+  <style type="text/css">
+      #cardId{color: black}
+  </style>
 </head>
 <body>
 
@@ -25,10 +34,11 @@
           <div class="widget-content">
             <div class="error_ex">
               <h4>余额（元）</h4>
-              <div th:each="wallet:${wallets}">
-                <h3 th:text="${wallet.getWalletBalance()}"></h3>
+              <div th:each="wallet:${wallet2.getWallet()}">
+                  <h3 th:text="${wallet.getWalletBalance()}"></h3>
               </div>
-              <a class="btn btn-warning btn-big"  href="/wallet/recharge">充值服务</a> </div>
+              <a class="btn btn-warning btn-big"  href="/wallet/recharge">充值服务</a>
+            </div>
           </div>
         </div>
       </div>
@@ -42,10 +52,17 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-content">
-            <div class="error_ex">
-              <h4>银行卡：</h4>
-
-              <a class="btn btn-warning btn-big"  href="/BankCard/bankCard">添加银行卡</a> </div>
+            <div class="error_ex" style="text-align: center">
+              <div class="btn btn-warning btn-big" style="background-color: lightskyblue;box-shadow:0px 0px 10px 5px #aaa;border-radius:30px 30px 30px 30px;width: 300px;height: 160px">
+                <div th:each="bankCard:${wallet2.getBankCard()}">
+                  <input id="img2" type="hidden" th:value="${bankCard.getBankName()}" /><br/>
+                  <img id="img" src="" />
+                  <h4 id="cardId" th:text="${bankCard.getCardId()}"></h4>
+                </div><br/>
+                <br/>
+            </div><br/>
+              <br/>
+            <a class="btn btn-warning btn-big"  href="/BankCard/bankCard">添加银行卡</a> </div>
           </div>
         </div>
       </div>

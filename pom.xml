@@ -110,6 +110,13 @@
     </dependency>
     <!--引入jstl end-->
 
+    <!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
+    <dependency>
+      <groupId>com.alipay.sdk</groupId>
+      <artifactId>alipay-sdk-java</artifactId>
+      <version>3.3.4.ALL</version>
+    </dependency>
+
   </dependencies>
 
 

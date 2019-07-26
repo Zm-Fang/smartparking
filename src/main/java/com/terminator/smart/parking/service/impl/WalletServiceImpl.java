@@ -40,6 +40,10 @@ public class WalletServiceImpl implements WalletService
         }
         else
         {
+            if (wallets.get(0).getWalletBalance() <= 0)
+            {
+                return 2;
+            }
             wallet.setWalletBalance(wallets.get(0).getWalletBalance()-money);
             return walletDao.updateWallet(wallet);
         }

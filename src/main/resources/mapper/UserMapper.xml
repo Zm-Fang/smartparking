@@ -85,4 +85,13 @@ VALUES
 		WHERE
 		`user_id` = #{userId};
 	</update>
+
+	<select id="getUserByUserName" resultType="com.terminator.smart.parking.entity.User">
+		SELECT
+	*
+FROM
+	USER
+WHERE
+	username = #{username}
+	</select>
 </mapper>

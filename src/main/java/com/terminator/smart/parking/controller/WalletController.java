@@ -81,10 +81,15 @@ public class WalletController
      * @return
      */
     @RequestMapping(value = "/payment",method = RequestMethod.POST)
-    public String toPaymentWallet(Double money,int orderId,HttpSession session)
+    public String toPaymentWallet(Double money,int orderId,HttpSession session,ModelMap modelMap)
     {
         User user = (User) session.getAttribute("USER_LOGIN");
-        walletService.updateWallet(user.getUserId(),money,0);
+        int i = walletService.updateWallet(user.getUserId(), money, 0);
+        if (i == 2)
+        {
+            return "error";
+
+        }
         return "redirect:/order/successful?orderId="+orderId;
     }
 }

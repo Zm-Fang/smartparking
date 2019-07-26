@@ -25,4 +25,6 @@ public interface UserService {
    int deleteUserByUserId(int id);
 
    int resetUsernamePasswordByUserId(int id);
+
+   List<User> getUserById(Integer id);
 }

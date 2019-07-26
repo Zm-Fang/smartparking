@@ -40,8 +40,12 @@ public interface UserDao {
     int deleteUserByUserId(int id);
     /**
      * @Description 管理员通过 id 重置用户
-     * @Author 方泽谋
+     * @Author 方泽谋d
      * @DateTime 2019/7/24 16:40
      */
     int resetUsernamePasswordByUserId(int id);
+
+    List<User> getUserByUserName(String username);
+
+    List<User> getUserById(Integer id);
 }

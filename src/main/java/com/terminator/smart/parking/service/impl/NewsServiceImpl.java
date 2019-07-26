@@ -30,6 +30,11 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public List<News> selectSystemNews() {
+        return newsDao.selectSystemNews();
+    }
+
+    @Override
     public int insertNews(News news) {
         return newsDao.insertNews(news);
     }

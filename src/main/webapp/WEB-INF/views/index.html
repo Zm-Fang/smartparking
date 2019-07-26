@@ -33,14 +33,14 @@
             $.post("/user/check",function (data) {
                 if (data==1)
                 {
+                    $("#name").html('<i class="icon icon-user"></i><span th:text="${user}"></span>');
+                    $("#name").attr("href", '#');
 
-                    $("#name").html('<font color="#a4d3ee"><span th:text="${user}"></span></font>');
                     // $("#re").html('<font color="#a4d3ee"><span th:text="${erro}"></span></font>');
                     $("#dist").attr("style","display: block");
                 }
             })
         })
-
 
     </script>
 </head>
@@ -54,15 +54,12 @@
     <!--top-Header-menu-->
     <div id="user-nav" class="navbar navbar-inverse" style="right: 15px">
         <ul class="nav">
-            <li  class="dropdown" id="profile-messages" >
-                <a title="" href="/user/login">
+            <li  class="dropdown" id="profile-messages">
+                <a title="" href="/user/login"  id="name">
                     <i class="icon icon-user"></i>
-                    <span class="text">
-						未登录</span>
+                    <span class="text">未登录</span>
                     <b class="caret"></b>
                 </a>
-                <!--<a th:text="${msg}"></a>
--->
             </li>
             <li class="" id="dist" style="display: none">
                 <a title="" href="/user/logout">
@@ -91,8 +88,8 @@
 
                 </a>
 				<ul>
-                    <li><a class="menu_a  ajaxCheckLogin" link="buttons.html" ><i class="icon icon-caret-right"></i> 系统消息</a></li>
-                    <li><a class="menu_a  ajaxCheckLogin" link="grid.html"><i class="icon icon-caret-right"></i>订单消息</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" link="/news/selectAllSystemNews"><i class="icon icon-caret-right"></i>系统消息</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" link="/news/selectByUserId"><i class="icon icon-caret-right"></i>订单消息</a></li>
                   
                 </ul>
             </li>

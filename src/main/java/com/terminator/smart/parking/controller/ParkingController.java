@@ -80,12 +80,12 @@ public class ParkingController {
 
         User user = (User) request.getSession().getAttribute("USER_LOGIN");
 
-        String createTime=data_date_format+" "+start_time+":00:00";
+        String startTime=data_date_format+" "+start_time+":00:00";
         String stopTime=data_date_format+" "+end_time+":00:00";
 
         Date date1 = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        String startTime = format.format(date1);
+        String createTime = format.format(date1);
 
         Double orderPrice=((end_time)-(start_time))*parkingPrice;
         Order order = new Order();
@@ -98,13 +98,15 @@ public class ParkingController {
         order.setStopTime(stopTime);
         order.setOrderStatus("未付款");
         order.setOrderPrice(orderPrice);
-        System.out.println("----------"+order);
+//        System.out.println("----------"+order);
         request.getSession().setAttribute("order",order);
-        System.out.println("===="+parking);
+//        System.out.println("===="+parking);
 
         boolean flag = parkingService.updateByOrderSuccess(parking);
+        System.out.println("1111:"+flag);
         if (flag){
-            return "forward:/order/insert";
+//            return "forward:/order/insert";
+            return "redirect:/news/addOrderNews";
         }
         return "index";
 

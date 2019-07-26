@@ -33,8 +33,26 @@
         WHERE
         news.news_flag = 1
         AND
-        news.user_id = #{userId}
-        OR
+        news.news_type = '订单消息'
+        AND
+        news.user_id = #{userId};
+    </select>
+
+    <select id="selectSystemNews" resultType="com.terminator.smart.parking.entity.News">
+        SELECT
+        news.news_id,
+        news.news_title,
+        news.news_body,
+        news.news_time,
+        news.news_type,
+        news.user_id,
+        news.username,
+        news.news_flag
+        FROM
+        news
+        WHERE
+        news.news_flag = 1
+        AND
         news.news_type = '系统消息';
     </select>
 

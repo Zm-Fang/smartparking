@@ -15,6 +15,8 @@ public interface NewsService {
 
     List<News> selectByUserId(int id);
 
+    List<News> selectSystemNews();
+
     int insertNews(News news);
 
     int deleteNewsByNewsId(int id);

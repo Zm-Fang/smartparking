@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -49,12 +50,19 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/adminLogin",method = RequestMethod.POST)
-    public String adminLogin(String adminName, String password, ModelMap modelMap) {
-        if ("admin".equals(adminName) && "admin".equals(password)) {
+    public String adminLogin(String adminName, String password, ModelMap modelMap, HttpSession session) {
+        if ("admin".equals(adminName.toLowerCase()) && "admin".equals(password)) {
+            session.setAttribute("admin","admin");
             return "redirect:/admin/toAdmin";
         }
         modelMap.addAttribute("msg", "管理员账号或密码错误");
         return "adminlogin";
+    }
+
+    @RequestMapping("/adminLogout")
+    public String adminLogout(HttpSession session) {
+        session.removeAttribute("admin");
+        return "redirect:/admin/toIndex";
     }
 
     @RequestMapping(value = "/toAdmin",method = RequestMethod.GET)
@@ -188,7 +196,7 @@ public class AdminController {
     @RequestMapping(value = "/toNews",method = RequestMethod.GET)
     public ModelAndView toNews(ModelAndView modelAndView) {
         modelAndView.setViewName("adminnews");
-        List<News> news = newsService.selectAll();
+        List<News> news = newsService.selectSystemNews();
         modelAndView.addObject("newsList", news);
         return modelAndView;
     }

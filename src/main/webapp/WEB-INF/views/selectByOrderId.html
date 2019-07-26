@@ -29,54 +29,59 @@
                             <h5>订单信息管理</h5>
                         </div>
                         <div class="widget-content ">
-                            <table class="table table-bordered table-striped with-check">
-                                <thead>
-                                <tr>
-                                    <th>用户名</th>
-                                    <th>车牌号</th>
-                                    <th>停车场名</th>
-                                    <th>订单创建时间</th>
-                                    <th>停车开始时间</th>
-                                    <th>停车结束时间</th>
-                                    <th>订单总价</th>
-                                    <th>订单状态</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                <tr>
-                                    <form action="/order/selectByUserId" method="get" >
-                                        <td>
-                                            <input type="text" name="username"  th:value="${order.getUsername()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="licenseNumber" th:value="${order.getLicenseNumber()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="parkingName" th:value="${order.getParkingName()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="startTime" th:value="${order.getStartTime()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="createTime" th:value="${order.getCreateTime()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text"  name="stopTime" th:value="${order.getStopTime()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text"  name="orderPrice" th:value="${order.getOrderPrice()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="text" name="orderStatus" th:value="${order.getOrderStatus()}" readonly="readonly"/>
-                                        </td>
-                                        <td>
-                                            <input type="submit" value="返回" class="btn btn-success" />
-                                        </td>
-                                    </form>
-                                </tr>
-                                </tbody>
-                            </table>
+                            <form action="/order/selectByUserId" method="get" class="form-horizontal">
+                                <div class="control-group">
+                                    <label class="control-label">用户名 :</label>
+                                    <div class="controls">
+                                        <input type="text" name="username"  th:value="${order.getUsername()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">车牌号 :</label>
+                                    <div class="controls">
+                                        <input type="text" name="licenseNumber" th:value="${order.getLicenseNumber()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">停车场名 :</label>
+                                    <div class="controls">
+                                        <input type="text" name="parkingName" th:value="${order.getParkingName()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">订单创建时间 :</label>
+                                    <div class="controls">
+                                        <input type="text" name="startTime" th:value="${order.getStartTime()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">停车开始时间 :</label>
+                                    <div class="controls">
+                                        <input type="text" name="createTime" th:value="${order.getCreateTime()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">停车结束时间 :</label>
+                                    <div class="controls">
+                                        <input type="text"  name="stopTime" th:value="${order.getStopTime()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">订单总价 :</label>
+                                    <div class="controls">
+                                        <input type="text"  name="orderPrice" th:value="${order.getOrderPrice()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">订单状态 :</label>
+                                    <div class="controls">
+                                        <input type="text" name="orderStatus" th:value="${order.getOrderStatus()}" readonly="readonly"/>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn btn-success">返回</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

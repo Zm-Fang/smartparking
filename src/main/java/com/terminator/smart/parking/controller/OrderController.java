@@ -31,7 +31,7 @@ public class OrderController {
         Order order = (Order) request.getSession().getAttribute("order");
         orderService.insert(order);
         modelMap.addAttribute("order",order);
-        request.getSession().removeAttribute("order");
+//        request.getSession().removeAttribute("order");
         return "noPay";
     }
 
@@ -68,7 +68,7 @@ public class OrderController {
     @RequestMapping(value = "/selectByOrderId",method = RequestMethod.POST)
     public String selectByOrderId(@RequestParam("orderId") Integer id,ModelMap modelMap){
         Order order = orderService.selectId(id);
-        System.out.println("======3======="+order);
+//        System.out.println("======3======="+order);
         modelMap.addAttribute("order",order);
         return "selectByOrderId";
     }
@@ -81,11 +81,12 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/toUpdate",method = RequestMethod.POST)
-    public String toUpdate(Order order,ModelMap modelMap){
+    public String toUpdate(Order order,ModelMap modelMap, HttpSession session){
         boolean flag = orderService.update(order);
         if (flag){
             modelMap.addAttribute("msg","<font color='green'>修改成功</font>");
-            List<Order> orders = orderService.selectByUserId(1);
+            User user = (User) session.getAttribute("USER_LOGIN");
+            List<Order> orders = orderService.selectByUserId(user.getUserId());
             modelMap.addAttribute("orderList",orders);
             return "order";
         }

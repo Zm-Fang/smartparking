@@ -1,7 +1,9 @@
 package com.terminator.smart.parking.controller;
 import com.terminator.smart.parking.entity.Order;
+import com.terminator.smart.parking.entity.Parking;
 import com.terminator.smart.parking.entity.User;
 import com.terminator.smart.parking.service.OrderService;
+import com.terminator.smart.parking.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+
+    @Autowired
+    private ParkingService parkingService;
+
     /**
      * 添加订单
      *
@@ -29,6 +35,7 @@ public class OrderController {
     @RequestMapping(value = "/insert")
     public String insert(HttpServletRequest request,ModelMap modelMap) {
         Order order = (Order) request.getSession().getAttribute("order");
+        System.out.println("====="+order);
         orderService.insert(order);
         modelMap.addAttribute("order",order);
         request.getSession().removeAttribute("order");

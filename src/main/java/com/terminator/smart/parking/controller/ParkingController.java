@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -67,18 +68,18 @@ public class ParkingController {
      * @return
      */
     @RequestMapping(value = "/reserve",method = RequestMethod.POST)
-    public String reserve(@RequestParam("parkingPrice")double parkingPrice,
+    public String reserve(Parking parking,
+                          @RequestParam("parkingPrice")double parkingPrice,
                           @RequestParam("parkingName")String parkingName,
                           @RequestParam("data-date-format")String data_date_format,
                           @RequestParam("start_time")Integer start_time,
                           @RequestParam("end_time")Integer end_time,
                           HttpServletRequest request)
     {
+        parking.setParkingUsable(parking.getParkingUsable()-1);
+
         User user = (User) request.getSession().getAttribute("USER_LOGIN");
 
-        /*user.setUserId(1);
-        user.setUsername("quange");
-        user.setLicenseNumber("1234465465");*/
         String createTime=data_date_format+" "+start_time+":00:00";
         String stopTime=data_date_format+" "+end_time+":00:00";
 
@@ -86,9 +87,7 @@ public class ParkingController {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         String startTime = format.format(date1);
 
-
         Double orderPrice=((end_time)-(start_time))*parkingPrice;
-
         Order order = new Order();
         order.setUserId(user.getUserId());
         order.setUsername(user.getUsername());
@@ -99,9 +98,16 @@ public class ParkingController {
         order.setStopTime(stopTime);
         order.setOrderStatus("未付款");
         order.setOrderPrice(orderPrice);
-        System.out.println("----------"+order);
+        System.out.println("----------"+order.getParkingName());
         request.getSession().setAttribute("order",order);
-        return "forward:/order/insert";
+        System.out.println("===="+parking);
+
+        boolean flag = parkingService.updateByOrderSuccess(parking);
+        if (flag){
+            return "forward:/order/insert";
+        }
+        return "index";
+
     }
 
 

@@ -26,4 +26,6 @@ public interface ParkingService {
     List<Parking> search(String parkingName);
 
     List<Parking> selectByParkingSite(String parkingSite);
+
+    boolean  updateByOrderSuccess(Parking parking);
 }

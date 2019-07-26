@@ -72,4 +72,13 @@ public interface ParkingDao {
     *@DateTime 2019/7/23 17:49
     */
     List<Parking>  selectByParkingSite(String parkingSite);
+
+    /**
+    *@Description   通过订单的状态，将可用车位减一，加一
+    *@Author 刘新全
+    *@DateTime 2019/7/26 9:02
+    */
+    int updateByOrderSuccess(Parking parking);
+
+
 }

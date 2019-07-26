@@ -58,13 +58,13 @@ public class UserLoginController {
      * @return
      */
     @RequestMapping(value = "login1", method = RequestMethod.POST)
-    public String login(HttpServletResponse a,String username, String password, Model model, HttpSession session) {
+    public String login(HttpServletResponse a, String username, String password, Model model, HttpSession session) {
         List<User> user = userService.findUser(username, password);
 
         if (user.size() != 0) {
             session.setAttribute("USER_LOGIN", user.get(0));
-            model.addAttribute("user","欢迎您,"+user.get(0).getUsername());
-            model.addAttribute("erro","退出");
+            model.addAttribute("user", "欢迎您," + user.get(0).getUsername());
+            model.addAttribute("erro", "退出");
             try {
                 a.getWriter().write("1");
             } catch (IOException e) {
@@ -82,6 +82,7 @@ public class UserLoginController {
         request.getSession().removeAttribute("USER_LOGIN");
         return "index";
     }
+
     /**
      * @Description 注册用户
      * @Author 杨志豪
@@ -90,7 +91,7 @@ public class UserLoginController {
 
     @RequestMapping(value = "register1", method = RequestMethod.POST)
     public String addUser(User user) {
-        System.out.println(user);
+//        System.out.println(user);
         int i = userService.insertUser(user);
         if (i > 0) {
             return "login";
@@ -124,9 +125,8 @@ public class UserLoginController {
         }
     }
 
-
     /**
-     * @Description 检查用户名是否存在
+     * @Description
      * @Author 杨志豪
      * @DateTime 2019/7/24 0024 10:07
      */
@@ -134,14 +134,15 @@ public class UserLoginController {
 
     public void check(HttpServletRequest request, HttpServletResponse response) {
         User user = (User) request.getSession().getAttribute("USER_LOGIN");
-        System.out.println("=========="+user);
+//        System.out.println("==========" + user);
         if (user != null) {
             try {
+
                 response.getWriter().write("1");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
+        } else {
             try {
                 response.getWriter().write("0");
             } catch (IOException e) {
@@ -149,8 +150,25 @@ public class UserLoginController {
             }
         }
     }
+
+    @RequestMapping(value = "/ajaxCheckLogin", method = RequestMethod.POST)
+    public void ajaxCheckLogin(HttpServletRequest request, HttpServletResponse response) {
+        User user = (User) request.getSession().getAttribute("USER_LOGIN");
+        if (user == null) {
+            try {
+                response.getWriter().write("0");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                response.getWriter().write("1");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
-
-
 
 

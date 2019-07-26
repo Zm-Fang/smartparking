@@ -107,7 +107,7 @@
 )
 VALUES
 	(
-		#{username},
+		#{parkingName},
 		#{createTime},
 		#{stopTime},
 		#{userId},

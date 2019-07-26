@@ -103,7 +103,6 @@ public class ParkingController {
 //        System.out.println("===="+parking);
 
         boolean flag = parkingService.updateByOrderSuccess(parking);
-        System.out.println("1111:"+flag);
         if (flag){
 //            return "forward:/order/insert";
             return "redirect:/news/addOrderNews";

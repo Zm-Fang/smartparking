@@ -22,45 +22,47 @@
                     <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
                         <h5>修改信息</h5>
                     </div>
+
+
+
                     <div class="widget-content nopadding">
                         <form class="form-horizontal" method="post" action="/user/setting1">
 
                             <div class="control-group">
                                 <label class="control-label">用户名</label>
                                 <div class="controls">
-                                    <input type="text" th:value="${USER_LOGIN.getUsername()}" name="username"  id="edit_name" />
+                                    <input type="text" th:value="${USER_LOGIN.getUsername()}" name="username"  id="edit_name" readonly="readonly" />
                                 </div>
                             </div>
 
                             <div class="control-group">
                                 <label class="control-label">密码</label>
                                 <div class="controls">
-                                    <input type="text" name="password" th:value="${USER_LOGIN.getPassword()}" />
+                                    <input type="text" name="password" th:value="${USER_LOGIN.getPassword()}" readonly="readonly" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">手机号</label>
                                 <div class="controls">
-                                    <input type="text" name="phone" th:value="${USER_LOGIN.getPhone()}"  />
+                                    <input type="text" name="phone" th:value="${USER_LOGIN.getPhone()}" readonly="readonly" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">车牌号</label>
                                 <div class="controls">
-                                    <input type="text" name="licenseNumber" th:value="${USER_LOGIN.getLicenseNumber()}" />
+                                    <input type="text" name="licenseNumber" th:value="${USER_LOGIN.getLicenseNumber()}" readonly="readonly"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">邮箱</label>
                                 <div class="controls">
-                                    <input type="text" name="email" th:value="${USER_LOGIN.getEmail()}" />
+                                    <input type="text" name="email" th:value="${USER_LOGIN.getEmail()}" readonly="readonly"/>
                                 </div>
                             </div>
                             <div class="form-actions">
                                 <label class="control-label"> <input type="submit" class="btn btn-success" value="保存" /></label>
                                 <label class="control-label"><input type="reset" class="btn btn-primary" /></label>
                             </div>
-
                         </form>
                     </div>
                 </div>

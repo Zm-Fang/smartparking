@@ -126,7 +126,7 @@ public class UserLoginController {
     }
 
     /**
-     * @Description 检查用户名是否存在
+     * @Description
      * @Author 杨志豪
      * @DateTime 2019/7/24 0024 10:07
      */
@@ -137,6 +137,7 @@ public class UserLoginController {
 //        System.out.println("==========" + user);
         if (user != null) {
             try {
+
                 response.getWriter().write("1");
             } catch (IOException e) {
                 e.printStackTrace();

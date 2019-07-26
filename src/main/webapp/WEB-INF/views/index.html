@@ -33,9 +33,7 @@
             $.post("/user/check",function (data) {
                 if (data==1)
                 {
-
                     $("#name").html('<font color="#a4d3ee"><span th:text="${user}"></span></font>');
-                    // $("#re").html('<font color="#a4d3ee"><span th:text="${erro}"></span></font>');
                     $("#dist").attr("style","display: block");
                 }
             })
@@ -57,7 +55,7 @@
             <li  class="dropdown" id="profile-messages" >
                 <a title="" href="/user/login">
                     <i class="icon icon-user"></i>
-                    <span class="text">
+                    <span class="text" id="name">
 						未登录</span>
                     <b class="caret"></b>
                 </a>
@@ -106,7 +104,7 @@
                     <span>我的</span>
                 </a>
                 <ul>
-                    <li><a class="menu_a ajaxCheckLogin" href="/user/setting"><i class="icon icon-caret-right"></i>用户信息</a></li>
+                    <li><a class="menu_a ajaxCheckLogin" link="/user/setting"><i class="icon icon-caret-right"></i>用户信息</a></li>
                     <li><a class="menu_a ajaxCheckLogin" link="/wallet/wallet"><i class="icon icon-caret-right"></i>我的钱包</a></li>
                     <li><a class="menu_a ajaxCheckLogin" link="/opinion/opinion"><i class="icon icon-caret-right"></i>意见反馈</a></li>
                

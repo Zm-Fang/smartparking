@@ -68,17 +68,17 @@
                                 <td>
                                     <form action="/order/update" method="post" th:if="${(order.getOrderStatus() ne '已失效') and (order.getOrderStatus() ne '已完成订单')}">
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
-                                        <input type="submit" class="btn btn-success" value="修改"/>
+                                        <input type="submit" class="btn btn-success" value="修       改"/>
                                     </form>
-                                    <form action="/order/delete">
+                                    <form action="/order/delete" th:if="${order.getOrderStatus() ne '未付款'}">
                                         <input type="hidden" th:value="${order.getUserId()}" name="userId"/>
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
-                                        <input type="submit" class="btn btn-danger" value="删除" />
+                                        <input type="submit" class="btn btn-danger" value="删       除" />
                                     </form>
                                     <form action="/wallet/payment" method="post" th:if="${(order.getOrderStatus() eq '未付款')}">
                                     <input type="hidden" th:value="${order.getOrderPrice()}" name="money"/>
                                     <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>
-                                    <input type="submit" class="btn btn-info" value="付款"/>
+                                    <input type="submit" class="btn btn-info" value="付       款"/>
                                     </form>
                                     <form action="/order/selectByOrderId" method="post">
                                         <input type="hidden" th:value="${order.getOrderId()}" name="orderId"/>

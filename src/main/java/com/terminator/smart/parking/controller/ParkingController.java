@@ -98,7 +98,7 @@ public class ParkingController {
         order.setStopTime(stopTime);
         order.setOrderStatus("未付款");
         order.setOrderPrice(orderPrice);
-        System.out.println("----------"+order);
+        System.out.println("----------"+order.getParkingName());
         request.getSession().setAttribute("order",order);
         System.out.println("===="+parking);
 
